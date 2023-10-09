@@ -9,16 +9,17 @@ function FormOrderPlace() {
         <h2>คำร้องจองการใช้สถานที่</h2>
         <div className="input-text">
             <div className="contain">
-            <div className="label-container">
-            <label htmlFor="fName">ชื่อ-นามสกุล</label>
-            <label htmlFor="IdNum" id='label1'>หมายเลขบัตรประชาชน</label>
+            <label htmlFor="fName">ชื่อ</label>
+            <label htmlFor="IdNum" id='label1' style={{marginLeft: "39%"}}>นามสกุล</label>
             </div>
+            <input type="text" name="fName" placeholder="กรุณากรอกชื่อของคุณ" required/>
+            <input type="text" placeholder="กรอกนามสกุล" required style={{}}/>
             </div>
-            <br />
-            <input type="text" name="fName" id="" placeholder="กรุณากรอกชื่อของคุณ" required/>
-            <input type="text" placeholder="เลขบัตรประชาชน" required/>
-            <br />
-        </div>
+            <div className="input-text">
+                <label htmlFor="">หมายเลขบัตรประชาชน</label>
+                <br />
+                <input type="text" placeholder="184xxxxxxxxxx" required/>
+            </div>
         <div className="input-text">
             <label htmlFor="Email" name="Email">Email</label>
             <br/>
@@ -43,8 +44,8 @@ function FormOrderPlace() {
             <input className="longtext" type="text" placeholder="สนามกีฬา" required/>
         </div>
         <div className="input-text">
-            <label htmlFor="">เอกสารประกอบ</label><br/>
-            <input className="boxfile" type="file" accept=""/>
+            <label htmlFor="">แนบสลิปการโอน</label><br/>
+            <input className="boxfile" type="file" accept="image/*" style={{marginTop: '1vh'}}/>
         </div>
         <div className="btn">
                 <button className='submit'>ยืนยัน</button>

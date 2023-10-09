@@ -30,7 +30,7 @@ function FormCon() {
             <div className="btn">
                 <button className='submit'>ยืนยัน</button>
             </div>
-            <br />
+            <br/>
             </form>
             </div>
         </div>

@@ -9,12 +9,9 @@ function FormTax() {
         <h2>ชำระค่าธรรมเนียม</h2>
         <div className="input-text">
             <div className="contain">
-            <label htmlFor="fName">ชื่อ-นามสกุล</label>
-            <label htmlFor="IdNum" id="label1">หมายเลขบัตรประชาชน</label>
-            </div>
+            <label htmlFor="fName">ชื่อ-นามสกุลของผู้โอนตามสลิป</label>            </div>
             <br/>
-            <input type="text" name="fName" id="" placeholder="กรุณากรอกชื่อของคุณ" required/>
-            <input type="text" placeholder="เลขบัตรประชาชน" required/>
+            <input className="longtext" type="text" name="fName" id="" placeholder="กรุณากรอกชื่อของคุณ" required/>
             <br/>
         </div>
         <div className="input-text">
@@ -28,7 +25,7 @@ function FormTax() {
             <input className="longtext" type="text" placeholder="08xxxxxxxx" required/>
         </div>
         <div className="input-text">
-            <label htmlFor="">ที่อยู่</label>
+            <label htmlFor="">รหัสบ้าน</label>
             <br/>
             <input className="longtext" type="text" placeholder="08xxxxxxxx" required/>
         </div>
@@ -36,21 +33,23 @@ function FormTax() {
             <label htmlFor="">เลือกการชำระเงิน</label>
             <br/><br/>
             <input type="radio" id="html" name="fav_language" value="HTML"/>
-            <label htmlFor="html">ชำระค่าธรรมเนียมขยะ</label><br/>
+            <label htmlFor="html"> ชำระค่าธรรมเนียมขยะ</label><br/>
             <input type="radio" id="css" name="fav_language" value="CSS"/>
-            <label htmlFor="css">ชำระค่าธรรมเนียมป้าย</label><br/>
+            <label htmlFor="css"> ชำระค่าธรรมเนียมป้าย</label><br/>
             <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
-            <label htmlFor="javascript">ภาษีอื่นๆ</label><br/>
+            <label htmlFor="javascript"> ภาษีอื่นๆ</label><br/>
         </div>
-        <br/><br/><br/>
+        <br />
         <div className="input-text">
             <label htmlFor="">วันที่ชำระ</label>
             <br/>
             <input type="date"/>
         </div>
             <div className="input-text">
-            <label htmlFor="">แนบสลิปการชำระเงิน   </label><br/>
-            <input className="boxfile" type="file" accept="image/jpeg, image/png"/>
+                <label htmlFor="">แนบสลิปการโอน</label><br/>
+                <input className="boxfile" type="file" accept="image/*" style={{marginTop: '1vh'}}/>
+            </div>
+            <div className="input-text">
         </div>
         <div className="btn">
             <button className='submit'>ยืนยัน</button>

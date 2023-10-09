@@ -9,13 +9,17 @@ function FormReq() {
                 <h2>แบบฟอร์มคำร้อง</h2>
                 <div className="input-text">
                     <div className="contain">
-                    <label htmlFor="fName">ชื่อ-นามสกุล</label>
-                    <label htmlFor="IdNum" id='label1'>หมายเลขบัตรประชาชน</label>
+                    <label htmlFor="fName">ชื่อ</label>
+                    <label htmlFor="IdNum" id='label1' style={{marginLeft: "39%"}}>นามสกุล</label>
                     </div>
                     <br/>
                     <input type="text" name="fName" placeholder="กรุณากรอกชื่อของคุณ" required/>
-                    <input type="text" placeholder="เลขบัตรประชาชน" required/>
+                    <input type="text" placeholder="กรอกนามสกุล" required style={{}}/>
+                </div>
+                <div className="input-text">
+                    <label htmlFor="">หมายเลขบัตรประชาชน</label>
                     <br />
+                    <input type="text" placeholder="184xxxxxxxxxx" required/>
                 </div>
                 <div className="input-text">
                     <label htmlFor="Email" name="Email">Email</label>
@@ -33,7 +37,7 @@ function FormReq() {
                 </div>
                 <div className="input-text">
                     <label htmlFor="">แนบรูปภาพ</label><br/>
-                    <input className="boxfile" type="file" accept="image/*" />
+                    <input className="boxfile" type="file" accept="image/*" style={{marginTop: '1vh'}}/>
                 </div>
                 <div className="input-text">
                     <label htmlFor="">ระบุพื้นที่ของปัญหา (ถ้ามี) </label>
