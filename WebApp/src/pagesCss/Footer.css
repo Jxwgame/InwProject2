@@ -1,0 +1,64 @@
+.main {
+    background: #eef8ff;
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background:linear-gradient(to right, #498cf0, #ec92f8);
+    color: #fff;
+    padding: 45px 0 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
+}
+.rowfooter{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.colfooter {
+    flex-basis: 25%;
+    padding: 10px 0px;
+}
+.colfooter .colfooter2{
+    width: 75%;
+}
+.colfooter #logo {
+    width: 80px;
+    margin-bottom: 30px;
+}
+.colfooter h3{
+    width: fit-content;
+    position: relative;
+    margin-bottom: 40px;
+}
+.email-id{
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+.ulFooter .liFooter{
+    list-style: none;
+    margin-bottom: 12px;
+}
+.ulFooter .liFooter a{
+    text-decoration: none;
+    color: #fff;
+}
+.aboutFooter{
+    margin-top: 20px;
+}
+.h4Footer{
+    display: inline;
+    margin-right: 12px;
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+}
+.h4Footer:hover{
+    color: rgb(83, 83, 241);
+}

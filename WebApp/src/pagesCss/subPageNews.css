@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.img-background{
+    min-height: 65vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(src/image/citylogin.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 10vh;
+}
+.newsContent{
+    min-height: 100vh;
+    margin-left: 20vh;
+    margin-right: 20vh;
+    margin-bottom: 15vh;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+}

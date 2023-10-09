@@ -1,0 +1,41 @@
+  img #logoMain{
+    width: 190px;
+  }
+  .navbar{
+    height: 5px;
+    background-color: rgb(248, 167, 143, 0.6);
+    display: flex;
+    padding: 2% 3%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar img{
+    width: 150px;
+  }
+  .nav-links{
+    flex: 1;
+    text-align: right;
+  }
+  .nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+  }
+  .nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.8s;
+  }
+  .nav-links ul li:hover::after{
+    width: 100%;
+  }

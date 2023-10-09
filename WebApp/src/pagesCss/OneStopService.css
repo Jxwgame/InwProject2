@@ -1,0 +1,129 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header2 {
+  min-height: 80vh;
+  width: 100%;
+  height: auto;
+  background-image: url(src/image/norway.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: right;
+}
+
+.nav-links ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav-links ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-links ul li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #5936f4;
+  display: block;
+  margin: auto;
+  transition: 0.8s;
+  cursor: pointer;
+}
+
+.nav-links ul li:hover::after {
+  width: 100%;
+}
+
+/* Add margin-right to inline list items */
+ul {
+  display: inline;
+  margin-right: 20px;
+}
+
+.container {
+  height: 60px;
+  width: 100%;
+  background-color: #6868685e;
+  position: relative;
+  top: 64.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container button {
+  position: relative;
+  top: 45vh;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #000000;
+  background-color: transparent;
+  width: 180px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer; /* เพิ่ม cursor: pointer เมื่อโฮ​​​​​​​​​​​​​เวอร์ปุ่ม */
+}
+
+button:hover {
+  background-color: #f5b4b4;
+  transition: 1s;
+}
+
+.text {
+  position: relative;
+  height: 80px;
+  top: 67vh;
+  left: 20px;
+  color: #ffffff;
+}
+.text .button{
+  display: inline;
+  margin-right: 40px;
+  font-size: 20px;
+  color: #000000;
+}
+.text .button:hover{
+  color: #6271f5;
+  cursor: pointer;
+}
+.container .Tab {
+  position: relative;
+  right: 18vh;
+  color: #000000;
+  cursor: pointer;
+  font-size: 20px;
+  
+}
+.container .Tab2 {
+  position: relative;
+  right: 25vh;
+}
+.switch{
+  position: relative;
+  width: 50%;
+  margin: auto;
+  top: 7vh;
+}
+.switch .props{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
