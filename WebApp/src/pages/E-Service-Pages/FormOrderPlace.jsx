@@ -48,7 +48,7 @@ function FormOrderPlace() {
             <input className="boxfile" type="file" accept="image/*" style={{marginTop: '1vh'}}/>
         </div>
         <div className="btn">
-                <button className='submit'>ยืนยัน</button>
+                <button className='submit'>ส่งตำร้อง</button>
             </div>
         </form>
     </div>

@@ -52,7 +52,7 @@ function FormTax() {
             <div className="input-text">
         </div>
         <div className="btn">
-            <button className='submit'>ยืนยัน</button>
+            <button className='submit'>ส่งคำร้อง</button>
         </div>
         </form>
     </div>

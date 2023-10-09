@@ -28,7 +28,7 @@ function FormCon() {
                 <textarea id="textarea" required></textarea>
             </div>
             <div className="btn">
-                <button className='submit'>ยืนยัน</button>
+                <button className='submit'>ส่งคำร้อง</button>
             </div>
             <br/>
             </form>

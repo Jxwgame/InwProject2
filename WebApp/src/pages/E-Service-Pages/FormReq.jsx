@@ -45,7 +45,7 @@ function FormReq() {
                     <input className="longtext" type="text" placeholder="ใกล้พื้นที่ xxx หมู่ x ต.Xxx"/>
                 </div>
                 <div className="btn">
-                    <button className='submit'>ยืนยัน</button>
+                    <button className='submit'>ส่งคำร้อง</button>
                 </div>
                 </form>
             </div>
