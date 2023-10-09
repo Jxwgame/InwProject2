@@ -1,7 +1,8 @@
 import React from "react";
 import '../pagesCss/About.css'
 import Footer from "./Option/Footer";
-
+// liligliygkli
+// 231321312321
 function About(){
     return (
         <div>
