@@ -42,11 +42,54 @@ function FormReq() {
     .catch((error) => {
         console.error('Error:', error);
     });
-    }
+}
+
+
     return (
         <div className='body'>
             <div className="background">
                 <form action="" onSubmit={(handleSubmit)}>
+                    
+export default function FormReq() {
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            const data = new FormData(event.currentTarget);
+
+            const jsonData = {
+                fname: data.get('fname'),
+                lname: data.get('lname'),
+                ci_id: data.get('citi_id'),
+                mail: data.get('mail'),
+                tel: data.get('tel'),
+                text: data.get('textarea'), 
+                image: data.get('image'),
+                text2: data.get('text2')
+    
+            }
+            fetch(' ', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok'){
+                        alert('success')
+                    }else {
+                        alert('fail')
+                    }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        };
+
+    return (
+        <div className='body'>
+            <div className="background">
+                <form action="" onSubmit={handleSubmit}>
                 <h2>แบบฟอร์มคำร้อง</h2>
                 <div className="input-text">
                     <div className="contain">
@@ -93,6 +136,3 @@ function FormReq() {
         </div>
     );
 }
-export default FormReq
-// 55555
-//33 232 1
