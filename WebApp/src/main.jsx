@@ -14,6 +14,7 @@ import AdminMain from './AdminSide/MainAdmin.jsx'
 import RequestAdmin from './AdminSide/Requset.jsx'
 import TestWeb from './AdminSide/test.jsx'
 import Login from './pages/Login.jsx'
+import CheckReq from './pages/E-Service-Pages/CheckReq.jsx'
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: 'test',
     element: <TestWeb/>
+  },
+  {
+    path: 'sum',
+    element: <CheckReq/>
   }
 ])
 

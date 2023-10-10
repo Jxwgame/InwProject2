@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import '../pagesCss/OneStopService.css'
 import NavBar from './NavBar';
 import FormCon from './E-Service-Pages/FormCon';
-import FirstPage from './E-Service-Pages/firstpage';
+import FirstPage from './E-Service-Pages/FirstPage';
 import FormReq from './E-Service-Pages/FormReq';
 import FormTax from './E-Service-Pages/FormTax';
 import FormOrderPlace from './E-Service-Pages/FormOrderPlace';
+import CheckPage from './E-Service-Pages/CheckPage';
 
 function OneStopService() {
 
@@ -40,6 +41,7 @@ function OneStopService() {
                 {currentPage === 'req' && <FormReq/>}
                 {currentPage === 'tax' && <FormTax/>}
                 {currentPage === 'orderplace' && <FormOrderPlace/>}
+                {currentPage === 'check' && <CheckPage/>}
             </section>
         </div>
     </div>

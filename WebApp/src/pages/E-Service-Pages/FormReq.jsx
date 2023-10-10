@@ -67,6 +67,21 @@ export default function FormReq() {
                     <br/>
                     <input className="longtext" type="text" id="tel" onChange={e=> setTel(e.target.value)} placeholder="08xxxxxxxx" required/>
                 </div>
+
+                <div className="input-text">
+                    <label htmlFor="">หน่วยงานที่ต้องการร้องเรียน</label>
+                    <br/>
+                    <select className="selectOption">
+                        <option value="" disabled selected>- - - - เลือกหน่วยงาน - - - -</option>
+                        <option className="listoption">หน่วยงานตำรวจ</option>
+                        <option className="listoption">หน่วยงานสาธารณะสุข</option>
+                        <option className="listoption">หน่วยงานราชการ</option>
+                        <option className="listoption">หน่วยงานดับเพลิง</option>
+                        <option className="listoption">หน่วยงานกรมทางหลวงชนบท</option>
+                        <option className="listoption">อื่นๆ</option>
+                    </select>
+                </div>
+
                 <label htmlFor="">เรื่องที่ประสงค์ส่งคำร้อง</label>
                 <div className="input-content">
                     <textarea name="textarea" id="text" onChange={e=> setText(e.target.value)} required></textarea>
@@ -74,11 +89,6 @@ export default function FormReq() {
                 <div className="input-text">
                     <label htmlFor="">แนบรูปภาพ (ถ้ามี) </label><br/>
                     <input className="boxfile" type="file" id="image" onChange={e=> setImage(e.target.value)} accept="image/*" style={{marginTop: '1vh'}}/>
-                </div>
-                <div className="input-text">
-                    <label htmlFor="">ระบุพื้นที่ของปัญหา (ถ้ามี) </label>
-                    <br/>
-                    <input className="longtext" type="text" onChange={e=> setText2(e.target.value)} placeholder="ใกล้พื้นที่ xxx หมู่ x ต.Xxx"/>
                 </div>
                 <div className="btn">
                     <button className='submit' type='submit'>ส่งคำร้อง</button>

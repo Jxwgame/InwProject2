@@ -9,7 +9,7 @@
   min-height: 80vh;
   width: 100%;
   height: auto;
-  background-image: url(src/image/norway.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(src/image/citylogin.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -115,6 +115,9 @@ button:hover {
 .container .Tab2 {
   position: relative;
   right: 25vh;
+}
+.Tab li {
+  color: white;
 }
 .switch{
   position: relative;

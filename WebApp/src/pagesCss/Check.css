@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.bodyCheck{
+    display: flex;
+    min-height: 50vh;
+    justify-content: center;
+    background-position: center;
+    background-color: transparent;
+    width: 80%;
+    height: 90%;
+}
+.check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.check input{
+    margin-top: 2%;
+    width: 50vh;
+    height: auto;
+    font-size: 20px;
+    border: 1px solid rgb(124, 124, 124);
+    border-radius: 5px;
+}
+.btnnCheck {
+    margin-top: 2%;
+    width: 25%;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4d9443;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.1s ease;
+}
+
+.btnnCheck:hover {
+    background: #3d7935;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.bodyCheckReq{
+    margin: 5vh 0;
+    width: 80%;
+    height: auto;
+}
+.sumReq{
+    margin-top: 2vh;
+    margin-left: 10vh;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 3fr;
+    gap: 0px;
+}
+.colreq{
+    margin-top: 1%;
+    height: 2vh;
+    /* flex: 1; */
+    padding: 20px 0;
+    text-align: center;
+    border: none;
+    margin: 0;
+}
+.bodyCheckReq h2{
+    text-align: center;
+}
