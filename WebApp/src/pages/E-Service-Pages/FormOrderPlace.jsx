@@ -18,34 +18,34 @@ function FormOrderPlace() {
             <div className="input-text">
                 <label htmlFor="">หมายเลขบัตรประชาชน</label>
                 <br />
-                <input type="text" placeholder="184xxxxxxxxxx" required/>
+                <input type="text" placeholder="184xxxxxxxxxx" required pattern="[0-9]{13}" title='โปรดกรอกรหัสบัตรประชาชน'/>
             </div>
-        <div className="input-text">
-            <label htmlFor="Email" name="Email">Email</label>
-            <br/>
-            <input className="longtext" type="text" placeholder="abcdef@gmail.com" required/>
-        </div>
         <div className="input-text">
             <label htmlFor="phone">เบอร์ติดต่อ</label>
             <br/>
             <input className="longtext" type="text" placeholder="08xxxxxxxx" required="กรุณากรอกเบอร์โทร"/>
         </div>
         <div className="input-text">
-            <label htmlFor="">ที่อยู่</label><br/>
-            <input className="longtext" type="text" placeholder="08xxxxxxxx" required/>
+            <label htmlFor="">สถานที่ที่ต้องการจอง</label><br />
+            <select className="selectOption">
+                <option value="" disabled selected>- - - - เลือกสถานที่ - - - -</option>
+                <option className="listoption">สนามกีฬา</option>
+                <option className="listoption">สถานีตำรวจ</option>
+                <option className="listoption">สถานีดับเพลิง</option>
+                <option className="listoption">เทศบาล</option>
+                <option className="listoption">ลานอเนกประสงค์</option>
+                <option className="listoption">อื่นๆ</option>
+            </select>
         </div>
+
         <div className="input-text">
             <label htmlFor="">วันที่ต้องการจอง</label>
             <br/>
             <input type="date"/>
         </div>
-        <div className="input-text">
-            <label htmlFor="">สถานที่ที่ต้องการจอง</label><br/>
-            <input className="longtext" type="text" placeholder="สนามกีฬา" required/>
-        </div>
-        <div className="input-text">
-            <label htmlFor="">แนบสลิปการโอน</label><br/>
-            <input className="boxfile" type="file" accept="image/*" style={{marginTop: '1vh'}}/>
+        <label htmlFor="">รายละเอียดที่ต้องการใช้สถานที่</label><br/>
+        <div className="input-content">
+            <textarea className="textarea" type="text" placeholder="..." required/>
         </div>
         <div className="btn">
                 <button className='submit'>ส่งตำร้อง</button>

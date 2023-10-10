@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 80vh;
 }
 .background h2{
     font-size: 26px;
@@ -32,9 +33,11 @@
     height: 60%;
     /* margin: 10px 0 20px 0; */
     padding: 0 3px;
+    font-size: 16px;
 }
 .input-text .longtext{
-    width: 550px;
+    width: 80vh;
+    font-size: 16px;
 }
 .input-text .boxfile{
     border: 2px solid #ccc;
@@ -83,4 +86,15 @@ h1 {
 
 .input-text .contain #label1{
     margin-left: 24vh;
+}
+
+.selectOption{
+    margin-top: 2%;
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    height: 4vh;
+    font-size: 16px;
 }

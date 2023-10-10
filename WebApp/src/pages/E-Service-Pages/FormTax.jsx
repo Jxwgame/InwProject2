@@ -9,15 +9,11 @@ function FormTax() {
         <h2>ชำระค่าธรรมเนียม</h2>
         <div className="input-text">
             <div className="contain">
-            <label htmlFor="fName">ชื่อ-นามสกุลของผู้โอนตามสลิป</label>            </div>
-            <br/>
-            <input className="longtext" type="text" name="fName" id="" placeholder="กรุณากรอกชื่อของคุณ" required/>
-            <br/>
-        </div>
-        <div className="input-text">
-            <label htmlFor="Email" name="Email">Email</label>
-            <br/>
-            <input className="longtext" type="text" placeholder="abcdef@gmail.com" required/>
+            <label htmlFor="fName">ชื่อ</label>
+            <label htmlFor="IdNum" id='label1' style={{marginLeft: "39%"}}>นามสกุล</label>
+            </div>
+            <input type="text" name="fName" placeholder="กรุณากรอกชื่อของคุณ" required/>
+            <input type="text" placeholder="กรอกนามสกุล" required style={{}}/>
         </div>
         <div className="input-text">
             <label htmlFor="phone">เบอร์ติดต่อ</label>

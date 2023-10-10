@@ -1,15 +1,15 @@
-import React from 'react';
+import  React from 'react';
 import '../../pagesCss/Form.css'
 
-function FormReq() {
-    const [fname, setFname]= React.useState('')
-    const [lname, setLname]=React.useState('')
-    const [citi_id, setCiti_id]=React.useState('')
-    const [mail, setMail]=React.useState('')
-    const [tel, setTel]=React.useState('')
-    const [text, setText]=React.useState('')
-    const [image, setImage]=React.useState('')
-    const [text2, setText2]=React.useState('')
+export default function FormReq() {
+    const [fname, setFname]=  React.useState('')
+    const [lname, setLname]=  React.useState('')
+    const [citi_id, setCiti_id]=  React.useState('')
+    const [mail, setMail]= React.useState('')
+    const [tel, setTel]= React.useState('')
+    const [text, setText]= React.useState('')
+    const [image, setImage]= React.useState('')
+    const [text2, setText2]= React.useState('')
     const handleSubmit = async(event) => {
         event.preventDefault();
     const jsonData = {
@@ -43,49 +43,6 @@ function FormReq() {
         console.error('Error:', error);
     });
 }
-
-
-    return (
-        <div className='body'>
-            <div className="background">
-                <form action="" onSubmit={(handleSubmit)}>
-                    
-export default function FormReq() {
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            const data = new FormData(event.currentTarget);
-
-            const jsonData = {
-                fname: data.get('fname'),
-                lname: data.get('lname'),
-                ci_id: data.get('citi_id'),
-                mail: data.get('mail'),
-                tel: data.get('tel'),
-                text: data.get('textarea'), 
-                image: data.get('image'),
-                text2: data.get('text2')
-    
-            }
-            fetch(' ', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(jsonData),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'ok'){
-                        alert('success')
-                    }else {
-                        alert('fail')
-                    }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        };
-
     return (
         <div className='body'>
             <div className="background">
@@ -103,12 +60,7 @@ export default function FormReq() {
                 <div className="input-text">
                     <label htmlFor="">หมายเลขบัตรประชาชน</label>
                     <br />
-                    <input type="text" citi_id="citi_id" onChange={e=> setCiti_id(e.target.value)} placeholder="184xxxxxxxxxx" required/>
-                </div>
-                <div className="input-text">
-                    <label htmlFor="Email" name="Email">Email</label>
-                    <br/>
-                    <input className="longtext" id="text" mail="mail" onChange={e=> setMail(e.target.value)} placeholder="abcdef@gmail.com" required/>
+                    <input type="text" citi_id="citi_id" onChange={e=> setCiti_id(e.target.value)} placeholder="184xxxxxxxxxx" required pattern="[0-9]{13}" title='โปรดกรอกรหัสบัตรประชาชน'/>
                 </div>
                 <div className="input-text">
                     <label htmlFor="phone">เบอร์ติดต่อ</label>
@@ -120,7 +72,7 @@ export default function FormReq() {
                     <textarea name="textarea" id="text" onChange={e=> setText(e.target.value)} required></textarea>
                 </div>
                 <div className="input-text">
-                    <label htmlFor="">แนบรูปภาพ</label><br/>
+                    <label htmlFor="">แนบรูปภาพ (ถ้ามี) </label><br/>
                     <input className="boxfile" type="file" id="image" onChange={e=> setImage(e.target.value)} accept="image/*" style={{marginTop: '1vh'}}/>
                 </div>
                 <div className="input-text">
