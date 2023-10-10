@@ -10,7 +10,7 @@ app.use(cors())
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'manager'
+  database: 'mydb'
 })
 
 /* insert data reference
@@ -45,6 +45,21 @@ app.post('/login', jsonParser, function (req, res, next){
   )
 })
 
-app.listen(3443, function () {
-  console.log('CORS-enabled web server listening on port 3443')
+//request test
+app.post('/formreq', jsonParser, async function (req, res, next) {
+  connection.execute(
+    'insert into reqtest (fname, lname, ci_id, mail, tel, text, image, text2) values(?,?,?,?,?,?,?,?)',
+    [req.body.fname, req.body.lname, req.body.ci_id, req.body.mail, req.body.tel, req.body.text, req.body.image, req.body.text2],
+    function(err) {
+        if(err){
+            res.json({status: 'error', msg: err})
+            return
+        }
+        res.json({status:'ok'})
+    }
+  );
+})
+
+app.listen(3131, function () {
+  console.log('CORS-enabled web server listening on port 3131')
 })
