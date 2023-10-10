@@ -34,6 +34,7 @@ function FormReq() {
         .then(data => {
             if(data.status === 'ok'){
                 alert('success')
+                window.location = '/1StopService'
             }else{
                 alert('fail')
             }
@@ -45,7 +46,7 @@ function FormReq() {
     return (
         <div className='body'>
             <div className="background">
-                <form action="">
+                <form action="" onSubmit={(handleSubmit)}>
                 <h2>แบบฟอร์มคำร้อง</h2>
                 <div className="input-text">
                     <div className="contain">
@@ -85,7 +86,7 @@ function FormReq() {
                     <input className="longtext" type="text" onChange={e=> setText2(e.target.value)} placeholder="ใกล้พื้นที่ xxx หมู่ x ต.Xxx"/>
                 </div>
                 <div className="btn">
-                    <button className='submit' onClick={(handleSubmit)}>ส่งคำร้อง</button>
+                    <button className='submit' type='submit'>ส่งคำร้อง</button>
                 </div>
                 </form>
             </div>
