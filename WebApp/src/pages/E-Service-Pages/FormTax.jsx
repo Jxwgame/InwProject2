@@ -16,6 +16,11 @@ function FormTax() {
             <input type="text" placeholder="กรอกนามสกุล" required style={{}}/>
         </div>
         <div className="input-text">
+            <label htmlFor="">หมายเลขบัตรประชาชน</label>
+            <br />
+            <input type="text" placeholder="184xxxxxxxxxx" required pattern="[0-9]{13}" title='โปรดกรอกรหัสบัตรประชาชน'/>
+        </div>
+        <div className="input-text">
             <label htmlFor="phone">เบอร์ติดต่อ</label>
             <br/>
             <input className="longtext" type="text" placeholder="08xxxxxxxx" required/>
@@ -24,6 +29,11 @@ function FormTax() {
             <label htmlFor="">รหัสบ้าน</label>
             <br/>
             <input className="longtext" type="text" placeholder="08xxxxxxxx" required/>
+        </div>
+        <div className="input-text">
+            <label htmlFor="">เลขที่ใบเสร็จ</label>
+            <br />
+            <input type="text" placeholder="" required/>
         </div>
         <div className="input-text">
             <label htmlFor="">เลือกการชำระเงิน</label>
