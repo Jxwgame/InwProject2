@@ -10,7 +10,7 @@ app.use(cors())
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'mydb'
+  database: 'manager_1'
 })
 
 /* insert data reference
@@ -29,6 +29,7 @@ app.post('/register', jsonParser, function (req, res, next) {
 })
 */
 
+//หน้า login
 app.post('/login', jsonParser, function (req, res, next){
   connection.execute(
     'SELECT * FROM employee WHERE emp_fname=?',
@@ -45,20 +46,286 @@ app.post('/login', jsonParser, function (req, res, next){
   )
 })
 
-//request test
+
+//form request
+//คำสั่งที่ใช้เทส postman api ==> "citizen_fname": "ปิยธานี",
+                          // "citizen_lname": "สร้อยทอง",
+                          // "citizen_id": "1114",
+                          // "citizen_tel": "0917118771",
+                          // "request_type": "แจ้งซ่อมไฟฟ้าสาธารณะ",
+                          // "request_date": "2021/10/11",
+                          // "request_desc": "ขอใช้ใจแลกเบอร์โทรได้ไหม",
+                          // "request_image": "null"
 app.post('/formreq', jsonParser, async function (req, res, next) {
   connection.execute(
-    'insert into reqtest (fname, lname, ci_id, mail, tel, text, image, text2) values(?,?,?,?,?,?,?,?)',
-    [req.body.fname, req.body.lname, req.body.ci_id, req.body.mail, req.body.tel, req.body.text, req.body.image, req.body.text2],
-    function(err) {
-        if(err){
-            res.json({status: 'error', msg: err})
-            return
-        }
-        res.json({status:'ok'})
+    'SELECT * FROM citizen WHERE citizen_id = ?',
+    [req.body.citizen_id],
+    function(err, results) {
+      if (err) {
+        res.json({status: 'error', msg: err});
+        return;
+      }
+      // ถ้ามี citizen_id อยู่แล้วในตาราง citizen
+      if (results.length > 0) {
+        connection.execute(
+          'SELECT * FROM request_type WHERE request_type = ?',
+          [req.body.request_type],
+          function(err, results) {
+            if (err) {
+              res.json({status: 'error', msg: err});
+              return;
+            }
+            if (results.length > 0) {
+                connection.execute(
+                  'INSERT INTO request (citizen_id, request_desc, request_image) VALUES(?,?,?)',
+                  [req.body.citizen_id, req.body.request_desc, req.body.request_image],
+                  function(err) {
+                    if(err) {
+                      res.json({status: 'error', msg: err});
+                      return;
+                    }
+                    res.json({status: 'ok'});
+                  }
+                );
+            }else{ //ในกรณีที่ request_type เป็นอื่นๆ
+              connection.execute(
+                //เพิ่มเซ็ตค่ากรณีอื่นๆ department_id = 6
+                'INSERT INTO request (request_type, citizen_id, request_desc, request_image, department_id) VALUES(?,?,?,?,6)',
+                [req.body.request_type, req.body.citizen_id, req.body.request_desc, req.body.request_image, department_id],
+                function(err) {
+                  if(err) {
+                    res.json({status: 'error', msg: err});
+                    return;
+                  }
+                  res.json({status: 'ok'});
+                }
+              );
+            }
+          })
+      } else {
+            connection.execute(
+              'insert into citizen (citizen_fname, citizen_lname, citizen_id, citizen_tel) values(?,?,?,?)',//?,?,?,?,?,?,?,?
+              [req.body.citizen_fname, req.body.citizen_lname, req.body.citizen_id, req.body.citizen_tel],
+              function(err) {
+                  if(err){
+                      res.json({status: 'error', msg: err})
+                      return
+                  }else{
+                    // connection.execute(
+                    // 'insert into request (request_type, citizen_id, request_desc, request_image) values(?,?,?,?)',
+                    // [req.body.request_type, req.body.citizen_id, req.body.request_desc, req.body.request_image],
+                    // function(err) {
+                    //   if(err){
+                    //     res.json({status: 'error', msg: err})
+                    //     return
+                    //   }
+                    //     res.json({status:'ok'})
+                    // })
+                    connection.execute(
+                      'SELECT * FROM request_type WHERE request_type = ?',
+                      [req.body.request_type],
+                      function(err, results) {
+                        if (err) {
+                          res.json({status: 'error', msg: err});
+                          return;
+                        }
+                        if (results.length > 0) {
+                            connection.execute(
+                              'INSERT INTO request (citizen_id, request_desc, request_image) VALUES(?,?,?)',
+                              [req.body.citizen_id, req.body.request_desc, req.body.request_image],
+                              function(err) {
+                                if(err) {
+                                  res.json({status: 'error', msg: err});
+                                  return;
+                                }
+                                res.json({status: 'ok'});
+                              }
+                            );
+                        }else{ //ในกรณีที่ request_type เป็นอื่นๆ
+                          connection.execute(
+                            //เพิ่มเซ็ตค่ากรณีอื่นๆ department_id = 6
+                            'INSERT INTO request (request_type, citizen_id, request_desc, request_image, department_id) VALUES(?,?,?,?,6)',
+                            [req.body.request_type, req.body.citizen_id, req.body.request_desc, req.body.request_image, department_id],
+                            function(err) {
+                              if(err) {
+                                res.json({status: 'error', msg: err});
+                                return;
+                              }
+                              res.json({status: 'ok'});
+                            }
+                          );
+                        }
+                      })
+                  }
+              }
+            );
+      }
     }
-  );
+  )
 })
+
+
+//ฟอร์มร้องทุกข์ FormCon
+app.post('/formcomplain', jsonParser, async function (req, res, next) {
+  connection.execute(
+    'SELECT * FROM department WHERE (department_name) = ?',
+    [req.body.department_name],
+function(err,results) {
+      if(err){
+        res.json({status: 'error', msg: err})
+        return
+      }
+      if (results.length > 0) {
+        const departmentID = results[0].department_id;
+        connection.execute(
+          'insert into complain (complain_desc, department_id) values(?,?)',
+          [req.body.complain_desc, departmentID],
+          function(err) {
+            if(err){
+              res.json({status: 'error', msg: err})
+              return
+            }
+              res.json({status:'ok'})
+          })
+      }else{
+        res.json({status: 'error', msg: 'ไม่พบหน่วยงาน'});
+      }
+    }
+  )
+})
+
+//formTax
+app.post('/formtax', jsonParser, async function (req, res, next) {
+  connection.execute(
+    'SELECT * FROM citizen WHERE citizen_id = ?',
+    [req.body.citizen_id],
+    function(err, results) {
+      if (err) {
+        res.json({status: 'error', msg: err});
+        return;
+      }
+      if (results.length > 0) {
+        connection.execute(
+          'INSERT INTO tax (tax_id, tax_date, tax_type, tax_bill) VALUES(?,?,?,?)',
+          [req.body.tax_id, req.body.tax_date, req.body.tax_type, req.body.tax_bill],
+          function(err) {
+            if(err) {
+              res.json({status: 'error', msg: err});
+              return;
+            }
+            res.json({status: 'ok'});
+          }
+        );
+      } else {
+            connection.execute(
+              'insert into citizen (citizen_fname, citizen_lname, citizen_id, citizen_tel, house_id) values(?,?,?,?,?)',//?,?,?,?,?,?,?,?
+              [req.body.citizen_fname, req.body.citizen_lname, req.body.citizen_id, req.body.citizen_tel, req.body.house_id],
+              function(err) {
+                  if(err){
+                      res.json({status: 'error', msg: err})
+                      return
+                  }else{
+                    connection.execute(
+                      'INSERT INTO tax (tax_id, tax_date, tax_type, tax_bill) VALUES(?,?,?,?)',
+                      [req.body.tax_id, req.body.tax_date, req.body.tax_type, req.body.tax_bill],
+                      function(err) {
+                        if(err) {
+                          res.json({status: 'error', msg: err});
+                          return;
+                        }
+                        res.json({status: 'ok'});
+                      }
+                    )
+                  }
+              }
+            );
+      }
+    }
+  )
+})
+
+//form order place
+app.post('/formplace', jsonParser, async function (req, res, next) {
+  await connection.execute(
+    'SELECT * FROM citizen WHERE citizen_id = ?',
+    [req.body.citizen_id],
+    function(err, results) {
+      if (err) {
+        res.json({status: 'error', msg: err});
+        return;
+      }
+      if (results.length > 0) { //เจอว่ามีบัตรปชชซ้ำ
+        const citizenID = results[0].citizen_id;
+        connection.execute(
+          'SELECT * FROM public_buildings WHERE building_name = ?',
+          [req.body.building_name],
+          function(err, results) {
+            if (err) {
+              res.json({status: 'error', msg: err});
+              return;
+            }
+            if (results.length > 0) { //เจอว่ามีสถานที่ตามที่กำหนด
+              const buildingID = results[0].building_id;
+              connection.execute(
+                'INSERT INTO booking (booking_date, booking_desc, citizen_id, building_id) VALUES(?,?,?,?)',
+                [req.body.booking_date, req.body.booking_desc, citizenID, buildingID],
+                function(err) {
+                  if(err) {
+                    res.json({status: 'error', msg: err});
+                    return;
+                  }
+                  res.json({status: 'ok'});
+                }
+              );
+            } else {
+              res.json({status: 'error', msg: 'ไม่พบสถานที่'});
+            }
+          }
+        )
+      } else { //ไม่เจอบัตรปชชซ้ำ (คนใหม่)
+        connection.execute(
+          'insert into citizen (citizen_fname, citizen_lname, citizen_id, citizen_tel) values(?,?,?,?)',//?,?,?,?,?,?,?,?
+          [req.body.citizen_fname, req.body.citizen_lname, req.body.citizen_id, req.body.citizen_tel],
+          function(err) {
+              if(err){
+                  res.json({status: 'error', msg: err})
+                  return
+              }else{
+                connection.execute(
+                  'SELECT * FROM public_buildings WHERE building_name = ?',
+                  [req.body.building_name],
+                  function(err, results) {
+                    if (err) {
+                      res.json({status: 'error', msg: err});
+                      return;
+                    }
+                    if (results.length > 0) { //เจอว่ามีสถานที่ตามที่กำหนด
+                      const buildingID = results[0].building_id;
+                      connection.execute(
+                        'INSERT INTO booking (booking_date, booking_desc, citizen_id, building_id) VALUES(?,?,?,?)',
+                        [req.body.booking_date, req.body.booking_desc, req.body.citizen_id, buildingID],
+                        function(err) {
+                          if(err) {
+                            res.json({status: 'error', msg: err});
+                            return;
+                          }
+                          res.json({status: 'ok'});
+                        }
+                      );
+                    } else {
+                      res.json({status: 'error', msg: 'ไม่พบสถานที่'});
+                      }
+                  }
+                )
+              }
+            }
+          );
+        }
+      }
+    )
+  }
+)
+
 
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')

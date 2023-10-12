@@ -1,27 +1,42 @@
-import  React from 'react';
+import React, { useState } from 'react';
 import '../../pagesCss/Form.css'
 
 export default function FormReq() {
+    const [selection, setSelection] = useState("");
+    const [otherdepartment, setDepartment] = useState("");
+
+    const handleSelectionChange = (event) => {
+        const selectedValue = event.target.value;
+        setSelection(selectedValue);
+
+    };
+    const handleOtherDepart = (event) => {
+        setDepartment(event.target.value);
+    };
+
     const [fname, setFname]=  React.useState('')
     const [lname, setLname]=  React.useState('')
     const [citi_id, setCiti_id]=  React.useState('')
-    const [mail, setMail]= React.useState('')
+    // const [mail, setMail]= React.useState('')
     const [tel, setTel]= React.useState('')
+    // const [selectedOption, setSelectedOption] = React.useState('');
     const [text, setText]= React.useState('')
     const [image, setImage]= React.useState('')
-    const [text2, setText2]= React.useState('')
+
+
+
     const handleSubmit = async(event) => {
         event.preventDefault();
     const jsonData = {
         fname: fname,
         lname: lname,
         ci_id: citi_id,
-        mail: mail,
         tel: tel,
+        select: selectedOption,
         text: text,
         image: image,
-        text2: text2
     }
+
 
     await fetch('http://localhost:3131/formreq', {
         method: 'POST',
@@ -53,10 +68,10 @@ export default function FormReq() {
                     <label htmlFor="fName">ชื่อ</label>
                     <label htmlFor="label1" id='label1' style={{marginLeft: "39%"}}>นามสกุล</label>
                     </div>
-                    <br/>
                     <input type="text" id="fname" onChange={e=> setFname(e.target.value)} placeholder="กรุณากรอกชื่อของคุณ" required/>
-                    <input type="text" id="lname" onChange={e=> setLname(e.target.value)} placeholder="กรอกนามสกุล" required style={{}}/>
+                    <input type="text" id="lname" onChange={e=> setLname(e.target.value)} placeholder="กรอกนามสกุล" required/>
                 </div>
+
                 <div className="input-text">
                     <label htmlFor="">หมายเลขบัตรประชาชน</label>
                     <br />
@@ -71,17 +86,31 @@ export default function FormReq() {
                 <div className="input-text">
                     <label htmlFor="">หน่วยงานที่ต้องการร้องเรียน</label>
                     <br/>
-                    <select className="selectOption">
+                    <select className="selectOption" onChange={handleSelectionChange} value={selection}>
                         <option value="" disabled selected>- - - - เลือกหน่วยงาน - - - -</option>
-                        <option className="listoption">หน่วยงานตำรวจ</option>
-                        <option className="listoption">หน่วยงานสาธารณะสุข</option>
-                        <option className="listoption">หน่วยงานราชการ</option>
-                        <option className="listoption">หน่วยงานดับเพลิง</option>
-                        <option className="listoption">หน่วยงานกรมทางหลวงชนบท</option>
+                        <option className="listoption">แจ้งคำร้องทั่วไป สำนักปลัด</option>
+                        <option className="listoption">แจ้งคำร้องทั่วไป กองช่าง</option>
+                        <option className="listoption">แจ้งซ่อมถนน ไหล่ทาง สะพาน</option>
+                        <option className="listoption">แจ้งซ่อมท่อระบายน้ำ</option>
+                        <option className="listoption">แจ้งคำร้องทั่วไป กองคลัง</option>
+                        <option className="listoption">แจ้งคำร้องทั่วไป กองศึกษา</option>
+                        <option className="listoption">แจ้งขอจำหน่ายสินค้าในที่สาธารณะ</option>
+                        <option className="listoption">แจ้งขอทำการโฆษณา</option>
+                        <option className="listoption">แจ้งขอประกอบกิจการที่เป็นอันตรายต่อสุขภาพ</option>
+                        <option className="listoption">แจ้งขอประกอบกิจการรับทำการเก็บขนส่งปฏิกูลมูลฝอย</option>
+                        <option className="listoption">แจ้งขอรับบริการใช้รถกู้ภัยฉุกเฉิน</option>
+                        <option className="listoption">แจ้งขอรัสนับสนุนตัดกิ่งไม้</option>
+                        <option className="listoption">แจ้งคำร้องทั่วไป กองสาธารณสุข</option>
+                        <option className="listoption">ขอสนัสนุนรถบรรทุกน้ำสำหรับทำความสะอาด</option>
+                        <option className="listoption">ขอสนัสนุนรถบรรทุกน้ำสำหรับอุปโภค บริโภค</option>
+                        <option className="listoption">ขอสนับบสนุนรถตักดิน</option>
+                        <option className="listoption">ขอสนับสนุนรถบรรทุกน้ำ สำหรับดันท่อระบายน้ำ</option>
                         <option className="listoption">อื่นๆ</option>
                     </select>
-                </div>
-
+                    {selection === "อื่นๆ" ? ( 
+                    <input style={{marginTop: '1vh', height: '3.5vh', fontSize: '16px'}}className="longtext" type="text" placeholder="กรุณากรอกชื่อหน่วยงาน" required onChange={handleOtherDepart} value={otherdepartment}/>
+                ) : null }
+                </div><br /><br />
                 <label htmlFor="">เรื่องที่ประสงค์ส่งคำร้อง</label>
                 <div className="input-content">
                     <textarea name="textarea" id="text" onChange={e=> setText(e.target.value)} required></textarea>

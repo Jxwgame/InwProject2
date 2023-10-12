@@ -8,7 +8,6 @@ function FormCon() {
     const handleSelectionChange = (event) => {
         const selectedValue = event.target.value;
         setSelection(selectedValue);
-
     };
     
     const handleOtherDepart = (event) => {
@@ -25,18 +24,17 @@ function FormCon() {
                 <br/>
                     <select className="selectOption" onChange={handleSelectionChange} value={selection}>
                         <option value="" disabled selected>- - - - เลือกหน่วยงาน - - - -</option>
-                        <option className="listoption">หน่วยงานตำรวจ</option>
-                        <option className="listoption">หน่วยงานสาธารณะสุข</option>
-                        <option className="listoption">หน่วยงานราชการ</option>
-                        <option className="listoption">หน่วยงานดับเพลิง</option>
-                        <option className="listoption">หน่วยงานกรมทางหลวงชนบท</option>
+                        <option className="listoption">สำนักปลัด</option>
+                        <option className="listoption">กองช่าง</option>
+                        <option className="listoption">กองคลัง</option>
+                        <option className="listoption">กองศึกษา</option>
+                        <option className="listoption">สาธารณสุข</option>
                         <option className="listoption">อื่นๆ</option>
                 </select>
                 {selection === "อื่นๆ" ? ( 
-                    <input style={{marginTop: '1vh', height: '3vh', fontSize: '16px'}}className="longtext" type="text" placeholder="กรุณากรอกชื่อหน่วยงาน" required onChange={handleOtherDepart} value={otherdepartment}/>
+                    <input style={{marginTop: '1vh', height: '3.5vh', fontSize: '16px'}}className="longtext" type="text" placeholder="กรุณากรอกชื่อหน่วยงาน" required onChange={handleOtherDepart} value={otherdepartment}/>
                 ) : null }
             </div>
-            <br />
             <br />
             <label htmlFor="" >เรื่องที่ร้องเรียน</label>
             <div className="input-content">
