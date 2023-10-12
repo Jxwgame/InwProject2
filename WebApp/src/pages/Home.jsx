@@ -16,7 +16,8 @@ function Home() {
                     qui quibusdam ullam debitis! Dolorum nobis consequuntur eveniet,<br/>
                     molestiae laudantium ad qui consectetur modi nam, quaerat aspernatur
                     accusantium nemo totam.</p>
-                    <button class="unique-button"><span></span>Enter Website</button>
+                    {/* <button class="unique-button"><a href="/1StopService"></a><span></span>Enter to E-service</button> */}
+                    <a href="/1StopService" class="unique-button"><span></span>Enter to E-service</a>
                 </div>
             </section>
             <Content/>

@@ -28,11 +28,11 @@ function Footer() {
                     <div className="colfooter">
                         <h3>Links</h3>
                         <ul className="ulFooter">
-                            <li className="liFooter">หน้าแรก</li> {/* จะทำให้มันเชื่อมหน้าต่างทีหลัง */}
-                            <li className="liFooter">เกี่ยวกับ</li>
-                            <li className="liFooter">การป้องกันการทุจริต</li>
-                            <li className="liFooter">E-Service</li>
-                            <li className="liFooter">ติดต่อ</li>
+                            <li className="liFooter" style={{cursor: 'pointer'}}><a href="/">หน้าแรก</a></li> {/* จะทำให้มันเชื่อมหน้าต่างทีหลัง */}
+                            <li className="liFooter" style={{cursor: 'pointer'}}><a href="/about">เกี่ยวกับ</a></li>
+                            <li className="liFooter" style={{cursor: 'pointer'}}><a href="/newspage">ข่าวสารประชาสัมพันธ์</a></li>
+                            <li className="liFooter" style={{cursor: 'pointer'}}><a href="/1StopService">E-Service</a></li>
+                            <li className="liFooter" style={{cursor: 'pointer'}}><a href="/ContactUs">ติดต่อ</a></li>
                         </ul>
 
                     </div>
