@@ -9,14 +9,7 @@ function NavBar() {
                 <div className="nav-links">
                     <ul>
                         <li><a href="/">หน้าหลัก</a></li>
-                        <li><a href="/about">เกี่ยวกับ</a>
-                            <ul className="dropdown">
-                                <li><a href="">####</a></li>
-                                <li><a href="">####</a></li>
-                                <li><a href="">####</a></li>
-                                <li><a href="">####</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="/about">เกี่ยวกับ</a></li>
                         <li><a href="/News">ข่าวสารประชาสัมพันธ์</a></li>
                         <li><a href="/1StopService">E-Service</a></li>
                         <li><a href="/ContactUs">ติดต่อ</a></li>

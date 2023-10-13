@@ -11,7 +11,7 @@ import NewsPage from './pages/News.jsx'
 import ContactPage from './pages/Contact.JSX'
 import PageNewsSub from './pages/Option/SubNews.jsx'
 import AdminMain from './AdminSide/MainAdmin.jsx'
-import RequestAdmin from './AdminSide/Requset.jsx'
+import RequestAdmin from './AdminSide/Request.jsx'
 import TestWeb from './AdminSide/test.jsx'
 import Login from './pages/Login.jsx'
 import CheckReq from './pages/E-Service-Pages/CheckReq.jsx'
@@ -20,6 +20,7 @@ import AdminComplain from './AdminSide/AdminComplain.jsx'
 import AdminOrderPlace from './AdminSide/AdminOrderPlace.jsx'
 import AdminAddNews from './AdminSide/AdminAddNews.jsx'
 import AdminEservice from './AdminSide/AdminCheckEservice.jsx'
+import AdminTax from './AdminSide/AdminTax.jsx'
 import LoginEdit from './pages/LoginEdit.jsx'
 
 const router = createBrowserRouter([
@@ -79,14 +80,22 @@ const router = createBrowserRouter([
     element: <AdminComplain/>
   },
   {
+    path: 'AdminTax',
+    element: <AdminTax/>
+  },
+  {
     path: 'AdminOrderPlace',
     element: <AdminOrderPlace/>
   }, 
-  { path: 'AdminManageNews', element: <AdminAddNews/>
-},
-  { path: 'Help', element: <AdminEservice/> },
+  { path: 'AdminManageNews', 
+    element: <AdminAddNews/>
+  },
+  { path: 'Help', 
+    element: <AdminEservice/> 
+  },
   {
-    path: 'adminLogin', element: <LoginEdit/>
+    path: 'adminLogin', 
+    element: <LoginEdit/>
   }
 ])
 

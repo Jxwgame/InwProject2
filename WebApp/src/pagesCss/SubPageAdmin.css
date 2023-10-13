@@ -1,0 +1,32 @@
+.backgroundPage{
+    max-height: 0;
+    background-color: black;
+    position: relative;
+    top: 10vh;
+    width: 87.9%;
+    left: 25vh;
+    height: 100%;
+}
+.TabBtn{
+    width: 100%;
+    height: 10vh;
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+}
+.TabBtn .AdminBtn{
+    font-size: 16px;
+    width: 5%;
+    border: none;
+    height: 40%;
+    margin-right: 1px;
+    color: #fff;
+    background-color: green;
+    border-radius: 5px;
+    position: relative;
+    left: 5%;
+    cursor: pointer;
+}
+.TabBtn .AdminBtn[name="Delete"]{
+    background-color: red;
+}

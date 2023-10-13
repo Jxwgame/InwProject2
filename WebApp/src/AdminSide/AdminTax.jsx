@@ -6,8 +6,8 @@ function AdminTax(){
         <div>
             <div>
                 <HeadAdmin/>
-                <div>
-
+                <div className="backgroundPage">
+                    <h1>ภาษี</h1>
                 </div>
             </div>
         </div>

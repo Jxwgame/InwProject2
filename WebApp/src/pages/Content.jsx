@@ -5,32 +5,37 @@ function Content() {
     return (
     <div>
     <section className="course">
-        <h1>Course</h1>
-        <p>Hello Myname  is aSDA</p>
+        <h1>คณะผู้บริหารตำบลตำไทย</h1>
+        <br />
+        <div className="imgcontent">
+            <img src="src/image/leader.jpg" alt=""/>
+        </div>
         <div className="row">
             <div className="col">
-                <h3>Column1</h3>
+                <h3>Elon</h3>
                 <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Ratione, nostrum!</p>
             </div>
             <div className="col">
-                <h3>Column2</h3>
+                <h3>Mark</h3>
                 <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                     Aut eius similique animi officia vitae culpa!</p>
             </div>
             <div className="col">
-                <h3>Column3</h3>
+                <h3>Jack</h3>
                 <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Eligendi similique, veritatis sunt perspiciatis nostrum tempore.</p>
             </div>
         </div>
     </section>
-
             <section className="content">
             <h1>Content</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus iusto distinctio aut! 
                 Sunt deleniti corrupti dolorem, omnis culpa quas reprehenderit 
-                dignissimos at tenetur neque optio nisi eum eligendi iusto fugiat.</p>
+                dignissimos at tenetur neque optio nisi eum eligendi iusto fugiat Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Accusantium amet hic nesciunt reprehenderit non ratione. Est qui possimus ad esse fuga ex odio doloribus ut illum eum repudiandae, 
+                ea totam dolores numquam suscipit magni unde sed reprehenderit neque commodi iste maxime quisquam. 
+                Doloremque esse at dolorum dicta dolores tempore odio.</p>
             <div className="row"> {/* เปิดแท็ก div ใหม่ */}
                 <div className="content-col">
                     <img src="src/image/photo1.jpg" alt="Photo 1"/>

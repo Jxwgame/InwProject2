@@ -117,7 +117,7 @@
   }
   .col{
     flex-basis: 31%;
-    background: #cce6bd;
+    background: #b6fffb;
     border-radius: 10px;
     margin-bottom: 5%;
     padding: 20px 12px;
@@ -132,7 +132,16 @@
   .col:hover{
     background-color: #a4bac4;
   }
-  
+  .imgcontent {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+  }
+  .imgcontent img{
+    width: 50%;
+    height: auto;
+    display: block;
+  }
   .content{
     width: 80%;
     margin: auto;
