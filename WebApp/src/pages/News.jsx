@@ -47,13 +47,9 @@ function NewsPage(){
                 </div>
             </div>
             </section>
-
-            <h1 style={{color: 'red', textAlign: 'left', marginLeft: '30vh'}}>ข่าวสาร</h1>
-                <ul className="buttonNews">
-                    <li>ประกาศ</li>
-                    <li>ข่าวประชาสัมพันธ์</li>
-                    <li>กิจกรรมชุมชน</li>
-                </ul>
+            <br />
+            <h1 style={{color: 'black', textAlign: 'left', marginLeft: '30vh'}}>ข่าวสาร</h1>
+            <br /><br />
             <section className="ContentNews">
                 <div className="blockNews">
                     <picture>

@@ -8,7 +8,7 @@ function PageNewsSub(){
         <div>
             <div className="img-background"></div>
             <h1 style={{textAlign: 'left', marginLeft: '20vh'}}>Title News</h1>
-            
+            <br /><br />
             <div className="newsContent">
                 <p style={{color: 'white'}}>Lorem Lorem ipsum dolor sit amet consectetur ad
                 ipisicing elit. Consequuntur eaque ullam repudiandae necessitatibus optio 

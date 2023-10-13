@@ -70,8 +70,9 @@
     grid-template-columns: 50% 50%;
     width: 70%;
     height: 34vh;
-    background-color: tomato;
+    background-color: rgb(136, 136, 136);
     margin-bottom: 10vh;
+    cursor: pointer;
   }
   .blockNews picture{
     width: 100%;
@@ -89,11 +90,13 @@
     width: 70%;
     height: 5vh;
     display: flex;
-    background-color: rgb(255, 99, 71, 0.5);
+    background-color: rgb(158, 158, 158);
     list-style: none;
     justify-content: center;
+    text-align: center;
     margin: 0 31vh;
     margin-bottom: 3vh;
+    color: #fff;
   }
   .buttonNews li a{
     color: #fff;
@@ -105,7 +108,7 @@
     cursor: pointer;
   }
   .buttonNews li:hover{
-    color: tomato;
+    color: rgb(89, 111, 236);
   }
   .insideNews {
     padding-left: 12px;
