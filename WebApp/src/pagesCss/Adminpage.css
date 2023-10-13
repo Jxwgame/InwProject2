@@ -4,12 +4,13 @@
     font-family: 'Poppins', sans-serif;
 }
 .sideAdmin .listAdmin {
-    width: 80%;
+    width: 100%;
     font-size: 20px;
     color: #fff;
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 10px 40px;
+    padding: 10px 0px;
 }
 .ulAdmin .listAdmin{
     margin-bottom: 10px;
@@ -18,23 +19,4 @@
 .listAdmin:hover{
     background: rgb(255, 255, 255);
     color: rgb(255, 81, 0);
-}
-.box-text {
-    position: absolute;
-    margin-top: 20px;
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.box-text .column{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 70%;
-    justify-content: center;
-    text-align: center;
-    margin-right: 20px;
-    background-color: rgb(127, 189, 247);
 }

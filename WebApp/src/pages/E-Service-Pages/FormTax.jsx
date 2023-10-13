@@ -38,11 +38,11 @@ function FormTax() {
         <div className="input-text">
             <label htmlFor="">เลือกการชำระเงิน</label>
             <br/><br/>
-            <input type="radio" id="html" name="fav_language" value="HTML"/>
+            <input type="radio" id="html" name="fav_language"/>
             <label htmlFor="html"> ชำระค่าธรรมเนียมขยะ</label><br/>
-            <input type="radio" id="css" name="fav_language" value="CSS"/>
+            <input type="radio" id="css" name="fav_language" />
             <label htmlFor="css"> ชำระค่าธรรมเนียมป้าย</label><br/>
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
+            <input type="radio" id="javascript" name="fav_language"/>
             <label htmlFor="javascript"> ภาษีอื่นๆ</label><br/>
         </div>
         <br />

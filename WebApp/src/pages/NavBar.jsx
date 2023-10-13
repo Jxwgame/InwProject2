@@ -17,7 +17,7 @@ function NavBar() {
                                 <li><a href="">####</a></li>
                             </ul>
                         </li>
-                        <li><a href="/newspage">ข่าวสารประชาสัมพันธ์</a></li>
+                        <li><a href="/News">ข่าวสารประชาสัมพันธ์</a></li>
                         <li><a href="/1StopService">E-Service</a></li>
                         <li><a href="/ContactUs">ติดต่อ</a></li>
                     </ul>

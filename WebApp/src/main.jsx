@@ -15,6 +15,12 @@ import RequestAdmin from './AdminSide/Requset.jsx'
 import TestWeb from './AdminSide/test.jsx'
 import Login from './pages/Login.jsx'
 import CheckReq from './pages/E-Service-Pages/CheckReq.jsx'
+import AdminRequest from './AdminSide/AdminRequest.jsx'
+import AdminComplain from './AdminSide/AdminComplain.jsx'
+import AdminOrderPlace from './AdminSide/AdminOrderPlace.jsx'
+import AdminAddNews from './AdminSide/AdminAddNews.jsx'
+import AdminEservice from './AdminSide/AdminCheckEservice.jsx'
+import LoginEdit from './pages/LoginEdit.jsx'
 
 const router = createBrowserRouter([
   {
@@ -63,6 +69,24 @@ const router = createBrowserRouter([
   {
     path: 'sum',
     element: <CheckReq/>
+  },
+  {
+    path: 'AdminReq',
+    element: <AdminRequest/>
+  },
+  {
+    path: 'AdminComplain',
+    element: <AdminComplain/>
+  },
+  {
+    path: 'AdminOrderPlace',
+    element: <AdminOrderPlace/>
+  }, 
+  { path: 'AdminManageNews', element: <AdminAddNews/>
+},
+  { path: 'Help', element: <AdminEservice/> },
+  {
+    path: 'adminLogin', element: <LoginEdit/>
   }
 ])
 

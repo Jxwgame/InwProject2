@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.bg-admin{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(src/image/chicago.jpg);
+    min-height: 50vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.content-card{
+    position: absolute;
+    left: 26vh;
+    width: 86%;
+    height: auto;
+    margin: 0px 20px;
+    align-items: center;
+}
+.box-text {
+    position: absolute;
+    margin-top: 20px;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.box-text .column{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    text-align: center;
+    margin-right: 20px;
+    background-color: rgb(50, 80, 107);
+    cursor: pointer;
+    transition: background 0.9s ease;
+}
+.box-text .column:hover{
+    background-color: rgb(10, 47, 148);
+}
+.column {
+    display: flex;
+    align-items: center;
+}
+.column .spanAdmin{
+    font-size: 40px;
+    position: relative;
+    top: 10px;
+    left: -15vh;
+    color: white;
+    font-weight: bold;
+}

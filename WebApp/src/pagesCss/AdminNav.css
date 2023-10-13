@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.sideAdmin{
+    width: 25vh;
+    background: #b34700;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+.tabAdmin{
+    width: 87.9%; 
+    position:absolute;
+    left: 25vh;
+    min-height: 9vh;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    height: 9.5%;
+}
+.adminbox{
+    position: relative;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.adminbox h1{
+    font-size: 22px;
+    margin-right: 7%;
+}   
+.adicon{
+    font-size: 40px;
+    margin-right: 5%;
+}
+.ulAdmin{
+    padding-top: 4vh;
+    background-color: rgb(53, 53, 53);
+    /* background: linear-gradient(to bottom, #fa8a3f,#ac3100); */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.ulAdmin .listAdmin{
+    font-size: 30px;
+}

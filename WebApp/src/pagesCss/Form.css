@@ -76,9 +76,9 @@ label{
     background-color: green;
 }
 .input-text input[type="radio"]{
-    width: 10px;
-    height: 10px;
-    padding: 0 10px;
+    width: 3%;
+    height: 20%;
+    padding: 0 5px;
 }
 h1 {
     text-align: center;

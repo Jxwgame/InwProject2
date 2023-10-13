@@ -9,11 +9,11 @@ function About(){
             <section className="nav2">
                 <div className="links2">
                     <ul className="aboutul">
-                        <li className="aboutlink">หน้าแรก</li>
-                        <li className="aboutlink">เกี่ยวกับ</li>
-                        <li className="aboutlink">E-Service</li>
-                        <li className="aboutlink">ข่าวประชาสัมพันธ์</li>
-                        <li className="aboutlink">ติดต่อ</li>
+                        <a href="/"><li className="aboutlink">หน้าแรก</li></a>
+                        <a href="/about"><li className="aboutlink">เกี่ยวกับ</li></a>
+                        <a href="/1StopService"><li className="aboutlink">E-Service</li></a>
+                        <a href="/News"><li className="aboutlink">ข่าวประชาสัมพันธ์</li></a>
+                        <a href="/ContactUs"><li className="aboutlink">ติดต่อ</li></a>
                     </ul>
                 </div>
             </section>

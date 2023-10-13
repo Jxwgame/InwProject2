@@ -22,10 +22,10 @@ function OneStopService() {
             <section className="nav-links">
                 <div className="container">
                     <ul className="Tab">
-                        <ul className="Tab2">
+                        {/* <ul className="Tab2"> */}
                             <li onClick={() => changePage('first')}>หน้าแรก</li>
                             <li onClick={() => changePage('check')}>ตรวจสอบการดำเนินการ</li>
-                        </ul>
+                        {/* </ul> */}
                         <li onClick={() => changePage('req')}>แบบฟอร์มคำร้องทั่วไป</li>
                         <li onClick={() => changePage('con')}>แบบฟอร์มร้องทุกข์</li>
                         <li onClick={() => changePage('tax')}>ชำระค่าธรรมเนียม</li>

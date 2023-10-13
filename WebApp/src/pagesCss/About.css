@@ -6,7 +6,7 @@
 .tabHead{
     min-height: 95vh;
     width: 100%;
-    background-image: url(src/image/photo3.jpg);
+    background-image: url(src/image/citylogin.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -26,10 +26,19 @@
 }
 .aboutul .aboutlink{
     padding: 3vh 0;
-    margin: 0px 20px;
+    margin: 0 20px;
     font-size: 22px;
     color: white;
 }
 .text-about{
     padding: 0 10vh;
+}
+.aboutlink{ 
+    cursor: pointer;
+}
+.aboutlink:hover{
+    color: blue;
+}
+a{
+    text-decoration: none;
 }

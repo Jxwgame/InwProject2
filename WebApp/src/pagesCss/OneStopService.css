@@ -18,6 +18,7 @@
 .nav-links {
   flex: 1;
   text-align: right;
+  height: 100%;
 }
 
 .nav-links ul li {
@@ -37,7 +38,7 @@
   content: '';
   width: 0%;
   height: 2px;
-  background: #5936f4;
+  background: #ff0000;
   display: block;
   margin: auto;
   transition: 0.8s;
@@ -48,18 +49,17 @@
   width: 100%;
 }
 
-/* Add margin-right to inline list items */
 ul {
   display: inline;
   margin-right: 20px;
 }
 
 .container {
-  height: 60px;
+  height: 100%;
   width: 100%;
   background-color: #6868685e;
   position: relative;
-  top: 64.3vh;
+  top: 66vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,16 +106,16 @@ button:hover {
 }
 .container .Tab {
   position: relative;
-  right: 18vh;
+  right: 0%;
   color: #000000;
   cursor: pointer;
   font-size: 20px;
   
 }
-.container .Tab2 {
+/* .container .Tab2 {
   position: relative;
-  right: 8%;
-}
+  right: 20%;
+} */
 .Tab li {
   color: white;
 }
