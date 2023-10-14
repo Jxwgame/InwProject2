@@ -2,24 +2,17 @@ import React, { useState } from 'react';
 import '../../pagesCss/Form.css'
 
 export default function FormReq() {
-    const [selection, setSelection] = useState("");
+    const [selection, setOption] = useState("");
     const [otherdepartment, setDepartment] = useState("");
-
-    const handleSelectionChange = (event) => {
-        const selectedValue = event.target.value;
-        setSelection(selectedValue);
-
-    };
+    
     const handleOtherDepart = (event) => {
         setDepartment(event.target.value);
     };
-
+    
     const [fname, setFname]=  React.useState('')
     const [lname, setLname]=  React.useState('')
     const [citi_id, setCiti_id]=  React.useState('')
-    // const [mail, setMail]= React.useState('')
     const [tel, setTel]= React.useState('')
-    // const [selectedOption, setSelectedOption] = React.useState('');
     const [text, setText]= React.useState('')
     const [image, setImage]= React.useState('')
 
@@ -30,10 +23,10 @@ export default function FormReq() {
     const jsonData = {
         fname: fname,
         lname: lname,
-        ci_id: citi_id,
+        citizen_id: citi_id,
         tel: tel,
-        select: selectedOption,
-        text: text,
+        selectoption: selection==='อื่นๆ'?otherdepartment:selection,
+        request_desc: text,
         image: image,
     }
 
@@ -47,6 +40,7 @@ export default function FormReq() {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(jsonData)
             if(data.status === 'ok'){
                 alert('success')
                 window.location = '/1StopService'
@@ -86,26 +80,26 @@ export default function FormReq() {
                 <div className="input-text">
                     <label htmlFor="">หน่วยงานที่ต้องการร้องเรียน</label>
                     <br/>
-                    <select className="selectOption" onChange={handleSelectionChange} value={selection}>
+                    <select className="selectOption" defaultValue={"เลือกหน่วยงาน"} onChange={e=> setOption(e.target.value)}>
                         <option value="" disabled selected>- - - - เลือกหน่วยงาน - - - -</option>
-                        <option className="listoption">แจ้งคำร้องทั่วไป สำนักปลัด</option>
-                        <option className="listoption">แจ้งคำร้องทั่วไป กองช่าง</option>
-                        <option className="listoption">แจ้งซ่อมถนน ไหล่ทาง สะพาน</option>
-                        <option className="listoption">แจ้งซ่อมท่อระบายน้ำ</option>
-                        <option className="listoption">แจ้งคำร้องทั่วไป กองคลัง</option>
-                        <option className="listoption">แจ้งคำร้องทั่วไป กองศึกษา</option>
-                        <option className="listoption">แจ้งขอจำหน่ายสินค้าในที่สาธารณะ</option>
-                        <option className="listoption">แจ้งขอทำการโฆษณา</option>
-                        <option className="listoption">แจ้งขอประกอบกิจการที่เป็นอันตรายต่อสุขภาพ</option>
-                        <option className="listoption">แจ้งขอประกอบกิจการรับทำการเก็บขนส่งปฏิกูลมูลฝอย</option>
-                        <option className="listoption">แจ้งขอรับบริการใช้รถกู้ภัยฉุกเฉิน</option>
-                        <option className="listoption">แจ้งขอรัสนับสนุนตัดกิ่งไม้</option>
-                        <option className="listoption">แจ้งคำร้องทั่วไป กองสาธารณสุข</option>
-                        <option className="listoption">ขอสนัสนุนรถบรรทุกน้ำสำหรับทำความสะอาด</option>
-                        <option className="listoption">ขอสนัสนุนรถบรรทุกน้ำสำหรับอุปโภค บริโภค</option>
-                        <option className="listoption">ขอสนับบสนุนรถตักดิน</option>
-                        <option className="listoption">ขอสนับสนุนรถบรรทุกน้ำ สำหรับดันท่อระบายน้ำ</option>
-                        <option className="listoption">อื่นๆ</option>
+                        <option className="listoption"value={'แจ้งคำร้องทั่วไป สำนักปลัด'}>แจ้งคำร้องทั่วไป สำนักปลัด</option>
+                        <option className="listoption"value={'แจ้งคำร้องทั่วไป กองช่าง'}>แจ้งคำร้องทั่วไป กองช่าง</option>
+                        <option className="listoption"value={'แจ้งซ่อมถนน ไหล่ทาง สะพาน'}>แจ้งซ่อมถนน ไหล่ทาง สะพาน</option>
+                        <option className="listoption"value={'แจ้งซ่อมท่อระบายน้ำ'}>แจ้งซ่อมท่อระบายน้ำ</option>
+                        <option className="listoption"value={'แจ้งคำร้องทั่วไป กองคลัง'}>แจ้งคำร้องทั่วไป กองคลัง</option>
+                        <option className="listoption"value={'แจ้งคำร้องทั่วไป กองศึกษา'}>แจ้งคำร้องทั่วไป กองศึกษา</option>
+                        <option className="listoption"value={'แจ้งขอจำหน่ายสินค้าในที่สาธารณะ'}>แจ้งขอจำหน่ายสินค้าในที่สาธารณะ</option>
+                        <option className="listoption"value={'แจ้งขอทำการโฆษณา'}>แจ้งขอทำการโฆษณา</option>
+                        <option className="listoption"value={'แจ้งขอประกอบกิจการที่เป็นอันตรายต่อสุขภาพ'}>แจ้งขอประกอบกิจการที่เป็นอันตรายต่อสุขภาพ</option>
+                        <option className="listoption"value={'แจ้งขอประกอบกิจการรับทำการเก็บขนส่งปฏิกูลมูลฝอย'}>แจ้งขอประกอบกิจการรับทำการเก็บขนส่งปฏิกูลมูลฝอย</option>
+                        <option className="listoption"value={'แจ้งขอรับบริการใช้รถกู้ภัยฉุกเฉิน'}>แจ้งขอรับบริการใช้รถกู้ภัยฉุกเฉิน</option>
+                        <option className="listoption"value={'แจ้งขอรัสนับสนุนตัดกิ่งไม้'}>แจ้งขอรัสนับสนุนตัดกิ่งไม้</option>
+                        <option className="listoption"value={'แจ้งคำร้องทั่วไป กองสาธารณสุข'}>แจ้งคำร้องทั่วไป กองสาธารณสุข</option>
+                        <option className="listoption"value={'ขอสนัสนุนรถบรรทุกน้ำสำหรับทำความสะอาด'}>ขอสนัสนุนรถบรรทุกน้ำสำหรับทำความสะอาด</option>
+                        <option className="listoption"value={'ขอสนัสนุนรถบรรทุกน้ำสำหรับอุปโภค บริโภค'}>ขอสนัสนุนรถบรรทุกน้ำสำหรับอุปโภค บริโภค</option>
+                        <option className="listoption"value={'ขอสนับบสนุนรถตักดิน'}>ขอสนับบสนุนรถตักดิน</option>
+                        <option className="listoption"value={'ขอสนับสนุนรถบรรทุกน้ำ สำหรับดันท่อระบายน้ำ'}>ขอสนับสนุนรถบรรทุกน้ำ สำหรับดันท่อระบายน้ำ</option>
+                        <option className="listoption"value={'อื่นๆ'}>อื่นๆ</option>
                     </select>
                     {selection === "อื่นๆ" ? ( 
                     <input style={{marginTop: '1vh', height: '3.5vh', fontSize: '16px'}}className="longtext" type="text" placeholder="กรุณากรอกชื่อหน่วยงาน" required onChange={handleOtherDepart} value={otherdepartment}/>
