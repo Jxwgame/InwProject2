@@ -53,7 +53,7 @@ function FormCon() {
                 <label htmlFor="department">หน่วยงานที่ต้องการร้องเรียน</label>
                 <br/>
                     <select className="selectOption" defaultValue={"เลือกหน่วยงาน"} onChange={e=> setOption(e.target.value)} >
-                        <option value="" >- - - - เลือกหน่วยงาน - - - -</option>
+                        <option value="" disabled>- - - - เลือกหน่วยงาน - - - -</option>
                         <option className="listoption"value={"สำนักปลัด"}>สำนักปลัด</option>
                         <option className="listoption"value={"กองช่าง"}>กองช่าง</option>
                         <option className="listoption"value={"กองคลัง"}>กองคลัง</option>
@@ -70,7 +70,7 @@ function FormCon() {
             <div className="input-content">
                 <textarea id="textarea" onChange={e=> setTextarea(e.target.value)}></textarea>
             </div>
-            <div className="btn">
+            <div className="btn" style={{marginTop: '3%'}}>
                 <button className='submit' type='submit'>ส่งคำร้อง</button>
             </div>
             <br/>

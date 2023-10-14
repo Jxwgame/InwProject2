@@ -104,8 +104,6 @@ function FormTax() {
                 <label htmlFor="">แนบสลิปการโอน</label><br/>
                 <input className="boxfile" type="file" id="image" onChange={e=> setImage(e.target.value)} accept="image/*" style={{marginTop: '1vh'}}/>
             </div>
-            <div className="input-text">
-        </div>
         <div className="btn">
             <button className='submit' type="submit">ส่งคำร้อง</button>
         </div>

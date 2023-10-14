@@ -74,6 +74,7 @@ label{
     border: none;
     color: #fff;
     background-color: green;
+    margin-bottom: 10%;
 }
 .input-text input[type="radio"]{
     width: 3%;

@@ -83,7 +83,7 @@ function FormOrderPlace() {
         <div className="input-text">
             <label htmlFor="">สถานที่ที่ต้องการจอง</label><br />
             <select className="selectOption" defaultValue={"เลือกสถานที่"} onChange={e=> setOption(e.target.value)}>
-                <option value="" >- - - - เลือกสถานที่ - - - -</option>
+                <option value="" disabled>- - - - เลือกสถานที่ - - - -</option>
                 <option className="listoption"value={"สนามกีฬา"}>สนามกีฬา</option>
                 <option className="listoption"value={"สวนสาธารณะที่1"}>สวนสาธารณะที่ 1</option>
                 <option className="listoption"value={"สวนสาธารณะที่2"}>สวนสาธารณะที่ 2</option>
@@ -97,7 +97,6 @@ function FormOrderPlace() {
             </>
             ) : null } */}
         </div>
-        <br />
         <div className="input-text">
             <label htmlFor="">วันที่ต้องการจอง</label>
             <br/>
@@ -108,7 +107,7 @@ function FormOrderPlace() {
             <textarea className="textarea" type="text" onChange={e=> setText(e.target.value)} placeholder="..." required/>
         </div>
         <div className="btn">
-                <button className='submit' type='submit'>ส่งคำร้อง</button>
+                <button className='submit' type='submit' style={{marginTop: '3%'}}>ส่งคำร้อง</button>
             </div>
         </form>
     </div>
