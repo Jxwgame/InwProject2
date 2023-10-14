@@ -383,6 +383,24 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
     );
   });
 
+  //checktax
+  app.get('/check2', jsonParser, function (req, res, next){
+    console.log(req.query)
+    const tax_id = req.query.text;
+    connection.query(
+      `
+      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status'
+      FROM tax
+      WHERE tax.tax_id = ?
+    `,
+      [tax_id],
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
 
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')
