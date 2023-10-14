@@ -3,14 +3,19 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
+.bodyBack{
+    min-height: 100vh;
+    width: 100%;
+}
 .bodyCheck{
     display: flex;
-    min-height: 50vh;
+    min-height: 10vh;
+    margin-left: 25%;
     justify-content: center;
     background-position: center;
     background-color: transparent;
-    width: 80%;
-    height: 90%;
+    width: 50%;
+    height: 100%;
 }
 .check {
     display: flex;
@@ -69,3 +74,23 @@
 .bodyCheckReq h2{
     text-align: center;
 }
+.TableCheck{
+    margin-top: 3%;
+    width: 80%;
+    margin-left: 20%;
+}
+table{
+    border-collapse: collapse;
+    width: 80%;
+    border: 2px solid #000
+}
+th, td {
+    border: 1px solid #000; /* เพิ่มเส้นขอบรอบคอลัมน์ */
+    padding: 8px; /* เพิ่มขอบรอบข้อความในคอลัมน์ */
+    text-align: center; /* จัดตรงกลางข้อความในคอลัมน์ */
+  }
+
+  th {
+    background-color: #f2f2f2; /* สีพื้นหลังของส่วนหัวตาราง */
+    font-weight: bold; /* ทำให้ข้อความในส่วนหัวตารางเป็นตัวหนา */
+  }

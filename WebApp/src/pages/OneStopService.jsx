@@ -7,6 +7,7 @@ import FormReq from './E-Service-Pages/FormReq';
 import FormTax from './E-Service-Pages/FormTax';
 import FormOrderPlace from './E-Service-Pages/FormOrderPlace';
 import CheckPage from './E-Service-Pages/CheckPage';
+import CheckPageTax from './E-Service-Pages/CheckPageTax';
 
 function OneStopService() {
 
@@ -25,6 +26,7 @@ function OneStopService() {
                         {/* <ul className="Tab2"> */}
                             <li onClick={() => changePage('first')}>หน้าแรก</li>
                             <li onClick={() => changePage('check')}>ตรวจสอบการดำเนินการ</li>
+                            <li onClick={() => changePage('checktax')}>ตรวจสอบการชำระภาษี</li>
                         {/* </ul> */}
                         <li onClick={() => changePage('req')}>แบบฟอร์มคำร้องทั่วไป</li>
                         <li onClick={() => changePage('con')}>แบบฟอร์มร้องทุกข์</li>
@@ -42,6 +44,7 @@ function OneStopService() {
                 {currentPage === 'tax' && <FormTax/>}
                 {currentPage === 'orderplace' && <FormOrderPlace/>}
                 {currentPage === 'check' && <CheckPage/>}
+                {currentPage === 'checktax' && <CheckPageTax/>}
             </section>
         </div>
     </div>
