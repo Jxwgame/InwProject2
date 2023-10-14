@@ -19,9 +19,9 @@ import AdminRequest from './AdminSide/AdminRequest.jsx'
 import AdminComplain from './AdminSide/AdminComplain.jsx'
 import AdminOrderPlace from './AdminSide/AdminOrderPlace.jsx'
 import AdminAddNews from './AdminSide/AdminAddNews.jsx'
-import AdminEservice from './AdminSide/AdminCheckEservice.jsx'
 import AdminTax from './AdminSide/AdminTax.jsx'
 import LoginEdit from './pages/LoginEdit.jsx'
+import AdminHelp from './AdminSide/AdminCheckEservice.jsx'
 
 const router = createBrowserRouter([
   {
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
     element: <AdminAddNews/>
   },
   { path: 'Help', 
-    element: <AdminEservice/> 
+    element: <AdminHelp/> 
   },
   {
     path: 'adminLogin', 
