@@ -361,6 +361,28 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
   }
 )
 
+//checkreq
+  app.get('/check1', jsonParser, function (req, res, next){
+    console.log(req.query)
+    const citizenId = req.query.text;
+    connection.query(
+      `
+      SELECT request_id AS 'id', request_type AS 'type', request_desc AS 'details', request_status AS 'status'
+      FROM request
+      WHERE request.citizen_id = ?
+      UNION ALL
+      SELECT booking_id AS 'id', booking_type AS 'type', booking_desc AS 'details', booking_status AS 'status'
+      FROM booking
+      WHERE booking.citizen_id = ?
+    `,
+      [citizenId, citizenId], // ใส่ตัวแปร citizenId ที่ได้รับมาจาก request ลงไปใน query
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
 
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')

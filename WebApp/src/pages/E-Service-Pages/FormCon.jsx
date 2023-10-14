@@ -53,7 +53,7 @@ function FormCon() {
                 <label htmlFor="department">หน่วยงานที่ต้องการร้องเรียน</label>
                 <br/>
                     <select className="selectOption" defaultValue={"เลือกหน่วยงาน"} onChange={e=> setOption(e.target.value)} >
-                        <option value="" disabled>- - - - เลือกหน่วยงาน - - - -</option>
+                        <option value="เลือกหน่วยงาน" >- - - - เลือกหน่วยงาน - - - -</option>
                         <option className="listoption"value={"สำนักปลัด"}>สำนักปลัด</option>
                         <option className="listoption"value={"กองช่าง"}>กองช่าง</option>
                         <option className="listoption"value={"กองคลัง"}>กองคลัง</option>

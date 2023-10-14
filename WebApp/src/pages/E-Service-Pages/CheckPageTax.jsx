@@ -21,12 +21,16 @@ function CheckPageTax() {
                         <th style={{width: '10%'}}>วันที่ชำระเงิน</th>
                         <th style={{width: '15%'}}>สถานะ</th>
                     </tr>
-                    <tr>
-                        <td>132134TAAX#65465</td>
-                        <td>คำร้องทั่วไป</td>
-                        <td>09/11/2566</td>
-                        <td>กำลังดำเนินการ</td>
-                    </tr>
+                    <tbody>
+                        {data.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.id}</td>
+                            <td>{item.type}</td>
+                            <td>{item.details}</td>
+                            <td>{item.status}</td>
+                        </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
         </div>

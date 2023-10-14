@@ -83,7 +83,7 @@ function FormOrderPlace() {
         <div className="input-text">
             <label htmlFor="">สถานที่ที่ต้องการจอง</label><br />
             <select className="selectOption" defaultValue={"เลือกสถานที่"} onChange={e=> setOption(e.target.value)}>
-                <option value="" disabled>- - - - เลือกสถานที่ - - - -</option>
+                <option value="เลือกสถานที่" >- - - - เลือกสถานที่ - - - -</option>
                 <option className="listoption"value={"สนามกีฬา"}>สนามกีฬา</option>
                 <option className="listoption"value={"สวนสาธารณะที่1"}>สวนสาธารณะที่ 1</option>
                 <option className="listoption"value={"สวนสาธารณะที่2"}>สวนสาธารณะที่ 2</option>

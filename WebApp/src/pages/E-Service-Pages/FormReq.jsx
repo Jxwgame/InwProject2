@@ -81,7 +81,7 @@ export default function FormReq() {
                     <label htmlFor="">หน่วยงานที่ต้องการร้องเรียน</label>
                     <br/>
                     <select className="selectOption" defaultValue={"เลือกหน่วยงาน"} onChange={e=> setOption(e.target.value)}>
-                        <option value="" disabled selected>- - - - เลือกหน่วยงาน - - - -</option>
+                        <option value="เลือกหน่วยงาน" >- - - - เลือกหน่วยงาน - - - -</option>
                         <option className="listoption"value={'แจ้งคำร้องทั่วไป สำนักปลัด'}>แจ้งคำร้องทั่วไป สำนักปลัด</option>
                         <option className="listoption"value={'แจ้งคำร้องทั่วไป กองช่าง'}>แจ้งคำร้องทั่วไป กองช่าง</option>
                         <option className="listoption"value={'แจ้งซ่อมถนน ไหล่ทาง สะพาน'}>แจ้งซ่อมถนน ไหล่ทาง สะพาน</option>
