@@ -2,9 +2,18 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
+import multer from "multer";
+import path from "path";
+import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
+
 var jsonParser = bodyParser.json()
 var app = express()
 
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
 app.use(cors())
 
 const connection = mysql.createConnection({
@@ -63,16 +72,21 @@ app.post('/login', jsonParser, function (req, res, next){
 // })
 
 
+//image upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'public/Images')
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+  }
+})
+const upload = multer({
+  storage: storage
+})
+//end image upload
 //form request
-//คำสั่งที่ใช้เทส postman api ==> "citizen_fname": "ปิยธานี",
-                          // "citizen_lname": "สร้อยทอง",
-                          // "citizen_id": "1114",
-                          // "citizen_tel": "0917118771",
-                          // "request_type": "แจ้งซ่อมไฟฟ้าสาธารณะ",
-                          // "request_date": "2021/10/11",
-                          // "request_desc": "ขอใช้ใจแลกเบอร์โทรได้ไหม",
-                          // "request_image": "null"
-app.post('/formreq', jsonParser, async function (req, res, next) {
+app.post('/formreq', upload.single('image'), jsonParser, async function (req, res, next) {
   connection.execute(
     'SELECT * FROM citizen WHERE citizen_id = ?',
     [req.body.citizen_id],
@@ -100,6 +114,13 @@ app.post('/formreq', jsonParser, async function (req, res, next) {
                       res.json({status: 'error', msg: err});
                       return;
                     }
+                    fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                      if (err) {
+                          console.error('Error:', err);
+                      } else {
+                          console.log('File has been saved!');
+                      }
+                  });
                     res.json({status: 'ok'});
                   }
                 );
@@ -120,6 +141,13 @@ app.post('/formreq', jsonParser, async function (req, res, next) {
                           res.json({status: 'error', msg: err});
                           return;
                         }
+                        fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                          if (err) {
+                              console.error('Error:', err);
+                          } else {
+                              console.log('File has been saved!');
+                          }
+                      });
                         res.json({status: 'ok'});
                       }
                     );
@@ -154,6 +182,13 @@ app.post('/formreq', jsonParser, async function (req, res, next) {
                                   res.json({status: 'error', msg: err});
                                   return;
                                 }
+                                fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                                  if (err) {
+                                      console.error('Error:', err);
+                                  } else {
+                                      console.log('File has been saved!');
+                                  }
+                              });
                                 res.json({status: 'ok'});
                               }
                             );
@@ -174,6 +209,13 @@ app.post('/formreq', jsonParser, async function (req, res, next) {
                                       res.json({status: 'error', msg: err});
                                       return;
                                     }
+                                    fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                                      if (err) {
+                                          console.error('Error:', err);
+                                      } else {
+                                          console.log('File has been saved!');
+                                      }
+                                  });
                                     res.json({status: 'ok'});
                                   }
                                 );
@@ -230,8 +272,9 @@ function(err,results) {
   )
 })
 
+
 //formTax
-app.post('/formtax', jsonParser, async function (req, res, next) {
+app.post('/formtax', upload.single('image'), jsonParser, async function (req, res, next) {
   // console.log(req.body.citizen_id)
   connection.execute(
     'SELECT * FROM citizen WHERE citizen_id = ?',
@@ -401,6 +444,133 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
     );
   });
 
+
+  //Admin check reqeust
+  app.get('/adcheckreq', jsonParser, function (req, res, next){
+    connection.query(
+      `
+      SELECT citizen_id AS 'id', request_type AS 'type', request_desc AS 'details', request_status AS 'status', request_id AS 'idr'
+      FROM request
+    `,
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
+  //Admin check tax
+  app.get('/adchecktax', jsonParser, function (req, res, next){
+    connection.query(
+      `
+      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status'
+      FROM tax
+    `,
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
+
+  //Admin check orderplace
+  app.get('/adcheckplace', jsonParser, function (req, res, next){
+    connection.query(
+      `
+      SELECT citizen_id AS 'id', building_id AS 'type' , booking_date AS 'date', booking_desc AS 'details', booking_status AS 'status'
+      FROM booking
+    `,
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
+  //Admin check complain
+  app.get('/adcheckcom', jsonParser, function (req, res, next){
+    connection.query(
+      `
+      select complain.complain_id AS 'id', department.department_name AS 'type', complain.complain_desc 'details', complain.complain_status AS 'status'
+      from complain
+      INNER join department on complain.department_id = department.department_id;
+      `,
+      function(err,results, fields) {
+        console.log(results);
+        res.json({results: results});
+      }
+    );
+  });
+
+  //Admin sta complain
+  app.put('/updateStatuscom/:id', jsonParser, async function(req, res, next) {
+    const id = req.params.id;
+    const newStatus = req.body.status;
+    connection.execute(
+      'UPDATE complain SET complain_status = ? WHERE complain_id = ?',
+      [newStatus, id],
+      function(err) {
+        if (err) {
+          res.json({ status: 'error', msg: err });
+          return;
+        }
+        res.json({ status: 'ok' });
+      }
+    );
+  });
+
+  //Admin sta req
+  app.put('/updateStatusreq/:idr', jsonParser, async function(req, res, next) {
+    console.log(req.params.idr)
+    const idr = req.params.idr;
+    const newStatus = req.body.status;
+    connection.execute(
+      'UPDATE request SET request_status = ? WHERE request_id = ?',
+      [newStatus, idr],
+      function(err) {
+        if (err) {
+          res.json({ status: 'error', msg: err });
+          return;
+        }
+        res.json({ status: 'ok' });
+      }
+    );
+  });
+
+  //Admin sta place
+  app.put('/updateStatusplace/:id', jsonParser, async function(req, res, next) {
+    const id = req.params.id;
+    const newStatus = req.body.status;
+    connection.execute(
+      'UPDATE booking SET booking_status = ? WHERE citizen_id = ?',
+      [newStatus, id],
+      function(err) {
+        if (err) {
+          res.json({ status: 'error', msg: err });
+          return;
+        }
+        res.json({ status: 'ok' });
+      }
+    );
+  });
+
+//Admin sta tax
+app.put('/updateStatustax/:id', jsonParser, async function(req, res, next) {
+  const id = req.params.id;
+  const newStatus = req.body.status;
+  connection.execute(
+    'UPDATE tax SET tax_payment_status = ? WHERE tax_id = ?',
+    [newStatus, id],
+    function(err) {
+      if (err) {
+        res.json({ status: 'error', msg: err });
+        return;
+      }
+      res.json({ status: 'ok' });
+    }
+  );
+});
 
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')

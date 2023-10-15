@@ -35,7 +35,7 @@ function CheckPage() {
         <table>
           <thead>
             <tr>
-              <th style={{ width: '22%' }}>หมายเลขบัตรประชาชน</th>
+              <th style={{ width: '22%' }}>หมายเลขคำร้อง</th>
               <th style={{ width: '15%' }}>ประเภท</th>
               <th style={{ width: '40%' }}>รายละเอียด</th>
               <th style={{ width: '15%' }}>สถานะ</th>

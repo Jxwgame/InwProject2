@@ -16,21 +16,42 @@ export default function FormReq() {
     const [text, setText]= React.useState('')
     const [image, setImage]= React.useState('')
 
-
+    // const formData = new FormData();
+    // formData.append('fname', fname);
+    // formData.append('lname', lname);
+    // formData.append('citizen_id', citi_id);
+    // formData.append('tel', tel);
+    // formData.append('selectoption', selection==='อื่นๆ'?otherdepartment:selection);
+    // formData.append('request_desc', text);
+    
+    // let fileReader = new FileReader()
+    // fileReader.readAsDataURL(image)
+    // fileReader.onload=()=>{
+    //     console.log(fileReader.result)
+    //     formData.append('image', fileReader.result); // เพิ่มไฟล์รูปภาพลง FormData
+    // }
 
     const handleSubmit = async(event) => {
         event.preventDefault();
-    const jsonData = {
-        fname: fname,
-        lname: lname,
-        citizen_id: citi_id,
-        tel: tel,
-        selectoption: selection==='อื่นๆ'?otherdepartment:selection,
-        request_desc: text,
-        image: image,
-    }
-
-
+        const blobToBase64 = (blob) => {
+            return new Promise((resolve) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(blob);
+              reader.onloadend = function () {
+                resolve(reader.result);
+              };
+            });
+          };
+        const jsonData = {
+            fname: fname,
+            lname: lname,
+            citizen_id: citi_id,
+            tel: tel,
+            selectoption: selection==='อื่นๆ'?otherdepartment:selection,
+            request_desc: text,
+            image: await blobToBase64(image),
+        }
+console.log(jsonData)
     await fetch('http://localhost:3131/formreq', {
         method: 'POST',
         headers: {
@@ -40,7 +61,7 @@ export default function FormReq() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(jsonData)
+            console.log(data)
             if(data.status === 'ok'){
                 alert('success')
                 window.location = '/1StopService'
@@ -111,7 +132,7 @@ export default function FormReq() {
                 </div>
                 <div className="input-text">
                     <label htmlFor="">แนบรูปภาพ (ถ้ามี) </label><br/>
-                    <input className="boxfile" type="file" id="image" onChange={e=> setImage(e.target.value)} accept="image/*" style={{marginTop: '1vh'}}/>
+                    <input className="boxfile" type="file" name='image' id="image" onChange={e=> setImage(e.target.files[0])} accept="image/*" style={{marginTop: '1vh'}}/>
                 </div>
                 <div className="btn">
                     <button className='submit' type='submit'>ส่งคำร้อง</button>

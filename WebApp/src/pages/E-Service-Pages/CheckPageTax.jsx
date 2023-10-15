@@ -34,7 +34,7 @@ function CheckPageTax() {
     <div className="bodyBack">
       <div className="bodyCheck">
         <div className="check">
-          <label htmlFor="" style={{ fontSize: '18px', marginRight: '2vh', display: 'flex', justifyContent: 'center' }}>กรอกหมายเลขบัตรประชาชน</label>
+          <label htmlFor="" style={{ fontSize: '18px', marginRight: '2vh', display: 'flex', justifyContent: 'center' }}>กรอกหมายเลขภาษี</label>
           <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="" />
           <button className="btnnCheck" onClick={fetchData}>ตรวจสอบ</button>
         </div>
