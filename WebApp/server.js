@@ -12,8 +12,6 @@ var app = express()
 
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
-const currentDateTime = new Date().toISOString().replace(/:/g, "-");
-const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
 app.use(cors())
 
 const connection = mysql.createConnection({
@@ -114,6 +112,8 @@ app.post('/formreq', upload.single('image'), jsonParser, async function (req, re
                       res.json({status: 'error', msg: err});
                       return;
                     }
+                    const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+                    const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
                     fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
                       if (err) {
                           console.error('Error:', err);
@@ -141,6 +141,8 @@ app.post('/formreq', upload.single('image'), jsonParser, async function (req, re
                           res.json({status: 'error', msg: err});
                           return;
                         }
+                        const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
                         fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
                           if (err) {
                               console.error('Error:', err);
@@ -182,6 +184,8 @@ app.post('/formreq', upload.single('image'), jsonParser, async function (req, re
                                   res.json({status: 'error', msg: err});
                                   return;
                                 }
+                                const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
                                 fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
                                   if (err) {
                                       console.error('Error:', err);
@@ -209,6 +213,8 @@ app.post('/formreq', upload.single('image'), jsonParser, async function (req, re
                                       res.json({status: 'error', msg: err});
                                       return;
                                     }
+                                    const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+const fileName = `public/Image/${currentDateTime}-${uuidv4()}.png`;
                                     fs.writeFile(fileName, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
                                       if (err) {
                                           console.error('Error:', err);
