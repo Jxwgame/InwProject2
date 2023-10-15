@@ -279,8 +279,19 @@ function(err,results) {
 })
 
 
+const storage1 = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'public/image2')
+  },
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
+  }
+})
+const upload1 = multer({
+  storage: storage1
+})
 //formTax
-app.post('/formtax', upload.single('image'), jsonParser, async function (req, res, next) {
+app.post('/formtax', upload1.single('image'), jsonParser, async function (req, res, next) {
   // console.log(req.body.citizen_id)
   connection.execute(
     'SELECT * FROM citizen WHERE citizen_id = ?',
@@ -293,12 +304,21 @@ app.post('/formtax', upload.single('image'), jsonParser, async function (req, re
       if (results.length > 0) {
         connection.execute(
           'INSERT INTO tax (tax_id, tax_date, tax_type, tax_bill, house_id) VALUES(?,?,?,?,?)',
-          [req.body.tax_id, req.body.tax_date, req.body.selectoption, req.body.tax_image, req.body.house_id],
+          [req.body.tax_id, req.body.tax_date, req.body.selectoption, req.body.image, req.body.house_id],
           function(err) {
             if(err) {
               res.json({status: 'error', msg: err});
               return;
             }
+              const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+              const fileName1 = `public/image2/${currentDateTime}-${uuidv4()}.png`;
+              fs.writeFile(fileName1, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                if (err) {
+                    console.error('Error:', err);
+                } else {
+                    console.log('File has been saved!');
+                }
+            });
             res.json({status: 'ok'});
           }
         );
@@ -313,12 +333,21 @@ app.post('/formtax', upload.single('image'), jsonParser, async function (req, re
                   }else{
                     connection.execute(
                       'INSERT INTO tax (tax_id, tax_date, tax_type, tax_bill, house_id) VALUES(?,?,?,?)',
-                      [req.body.tax_id, req.body.tax_date, req.body.selectoption, req.body.tax_image, req.body.house_id||null],
+                      [req.body.tax_id, req.body.tax_date, req.body.selectoption, req.body.image, req.body.house_id||null],
                       function(err) {
                         if(err) {
                           res.json({status: 'error', msg: err});
                           return;
                         }
+                          const currentDateTime = new Date().toISOString().replace(/:/g, "-");
+                          const fileName1 = `public/image2/${currentDateTime}-${uuidv4()}.png`;
+                          fs.writeFile(fileName1, req.body.image.replace("data:image/png;base64,",""), 'base64', (err) => {
+                            if (err) {
+                                console.error('Error:', err);
+                            } else {
+                                console.log('File has been saved!');
+                            }
+                          });
                         res.json({status: 'ok'});
                       }
                     )
@@ -459,25 +488,43 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
       FROM request
     `,
       function(err,results, fields) {
-        console.log(results);
         res.json({results: results});
       }
     );
   });
 
+
   //Admin check tax
   app.get('/adchecktax', jsonParser, function (req, res, next){
     connection.query(
       `
-      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status'
+      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status', tax_bill AS 'image'
       FROM tax
     `,
-      function(err,results, fields) {
-        console.log(results);
+      function(err,results) {
+        results = results.map(({id, type, date, status, image}) => {
+          // console.log(e.image)
+          return {id, type, date, status, image: Buffer.from(image, "base64").toString()};
+        })
         res.json({results: results});
       }
     );
   });
+  //Admin image tax
+// app.get('/showimage/:id', jsonParser, async function(req, res, next) {
+//   const id = req.params.id;
+//   connection.query('SELECT tax_bill  FROM tax WHERE tax_id = ?', [id],
+//     function(err, results) { // เพิ่ม parameter results ใน callback function
+//       if (err) {
+//         res.json({ status: 'error', msg: err });
+//         return;
+//       }
+//       const imageBlob = results[0];
+//       const imageBuffer = Buffer.from(imageBlob.tax_bill).toString();
+//       res.json({results:imageBuffer})
+//     }
+//   );
+// });
 
 
   //Admin check orderplace
@@ -577,6 +624,7 @@ app.put('/updateStatustax/:id', jsonParser, async function(req, res, next) {
     }
   );
 });
+
 
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')

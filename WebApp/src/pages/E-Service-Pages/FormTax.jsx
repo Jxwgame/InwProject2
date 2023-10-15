@@ -16,18 +16,28 @@ function FormTax() {
 
 
     const handleSubmit = async(event) => {
+        console.log(image)
         event.preventDefault();
-    const jsonData = {
-        citizen_fname: fname,
-        citizen_lname: lname,
-        citizen_id: citi_id,
-        citizen_tel: tel,
-        house_id: house_id,
-        tax_id: tax_id,
-        selectoption: selection,
-        tax_date: date1,
-        tax_image: image,
-    }
+        const blobToBase64 = (blob) => {
+            return new Promise((resolve) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(blob);
+              reader.onloadend = function () {
+                resolve(reader.result);
+              };
+            });
+          };
+        const jsonData = {
+            citizen_fname: fname,
+            citizen_lname: lname,
+            citizen_id: citi_id,
+            citizen_tel: tel,
+            house_id: house_id,
+            tax_id: tax_id,
+            selectoption: selection,
+            tax_date: date1,
+            image: await blobToBase64(image),
+        }
 
 
     await fetch('http://localhost:3131/formtax', {
@@ -102,7 +112,7 @@ function FormTax() {
         </div>
             <div className="input-text">
                 <label htmlFor="">แนบสลิปการโอน</label><br/>
-                <input className="boxfile" type="file" id="image" onChange={e=> setImage(e.target.value)} accept="image/*" style={{marginTop: '1vh'}}/>
+                <input className="boxfile" type="file" name="image" id="image" onChange={e=> setImage(e.target.files[0])} accept="image/*" style={{marginTop: '1vh'}}/>
             </div>
         <div className="btn">
             <button className='submit' type="submit">ส่งคำร้อง</button>

@@ -66,6 +66,16 @@ function AdminTax() {
       });
   };
 
+  const fetchimage = (id) => {
+    fetch(`http://localhost:3131/showimage/${id}`)
+      .then(response => response.blob())
+      .then(blob => {
+        const imageUrl = URL.createObjectURL(blob);
+        setImage(imageUrl);
+      })
+      .catch(error => console.error('Error:', error));
+  };
+
   const handleAccept = (id) => {
     fetch(`http://localhost:3131/updateStatustax/${id}`, {
         method: 'PUT',
@@ -114,7 +124,8 @@ function AdminTax() {
                 <th style={{width: '10%'}}>เลขที่ใบเสร็จ</th>
                 <th style={{width: '10%'}}>ประเภทภาษี</th>
                 <th style={{width: '10%'}}>วันที่ที่ชำระเงิน</th>
-                <th style={{width: '15%'}}>สถานะ</th>
+                <th style={{width: '10%'}}>สลิป</th>
+                <th style={{width: '5%'}}>สถานะ</th>
               </tr>
             </thead>
             <tbody>
@@ -123,6 +134,7 @@ function AdminTax() {
                   <td>{item.id}</td>
                   <td>{item.type}</td>
                   <td>{formattedDate(item.date)}</td>
+                  <td> <img height="80%" width="80%" src={item.image}/> </td>
                   <td>
                     {item.status}
                     <div className="TabBtnReq">
