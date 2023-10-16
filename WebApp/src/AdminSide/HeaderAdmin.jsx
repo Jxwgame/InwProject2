@@ -33,7 +33,7 @@ function HeadAdmin(){
                     <a href="/AdminComplain"><li className="listAdmin">Complain Alert</li></a>
                     <a href="/AdminOrderPlace"><li className="listAdmin">OrderPlace Alert</li></a>
                     <a href="/AdminTax"><li className="listAdmin">Tax/Bill Alert</li></a>
-                    <a href="/AdminManageNews"><li className="listAdmin">News Form</li></a>
+                    {/* <a href="/AdminManageNews"><li className="listAdmin">News Form</li></a> */}
                     <a href="/Help"><li className="listAdmin">Help</li></a>
                 </ul>
             </div>

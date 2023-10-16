@@ -131,7 +131,7 @@ console.log(jsonData)
                     <textarea name="textarea" id="text" onChange={e=> setText(e.target.value)} required></textarea>
                 </div>
                 <div className="input-text">
-                    <label htmlFor="">แนบรูปภาพ (ถ้ามี) </label><br/>
+                    <label htmlFor="">แนบรูปภาพ</label><br/>
                     <input className="boxfile" type="file" name='image' id="image" onChange={e=> setImage(e.target.files[0])} accept="image/*" style={{marginTop: '1vh'}}/>
                 </div>
                 <div className="btn">

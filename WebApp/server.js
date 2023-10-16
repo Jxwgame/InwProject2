@@ -626,6 +626,55 @@ app.put('/updateStatustax/:id', jsonParser, async function(req, res, next) {
 });
 
 
+//จำนวนคำร้อง
+app.get('/countreq', jsonParser, function (req, res, next){
+  connection.query(
+    `
+    SELECT COUNT(request_id) as 'cntreq' FROM request 
+  `,
+    function(err,results) {
+      console.log(results);
+      res.json({results: results});
+    }
+  );
+});
+//จำนวนcomplain
+app.get('/countcom', jsonParser, function (req, res, next){
+  connection.query(
+    `
+    SELECT COUNT(complain_id) as 'cntcom' FROM complain 
+  `,
+    function(err,results) {
+      console.log(results);
+      res.json({results: results});
+    }
+  );
+});
+//จำนวนtax
+app.get('/counttax', jsonParser, function (req, res, next){
+  connection.query(
+    `
+    SELECT COUNT(tax_id) as 'cnttax' FROM tax 
+  `,
+    function(err,results) {
+      console.log(results);
+      res.json({results: results});
+    }
+  );
+});
+//จำนวนplace
+app.get('/countplace', jsonParser, function (req, res, next){
+  connection.query(
+    `
+    SELECT COUNT(booking_id) as 'cntplace' FROM booking 
+  `,
+    function(err,results) {
+      console.log(results);
+      res.json({results: results});
+    }
+  );
+});
+
 app.listen(3131, function () {
   console.log('CORS-enabled web server listening on port 3131')
 })

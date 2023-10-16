@@ -34,7 +34,7 @@ function CheckPageTax() {
     <div className="bodyBack">
       <div className="bodyCheck">
         <div className="check">
-          <label htmlFor="" style={{ fontSize: '18px', marginRight: '2vh', display: 'flex', justifyContent: 'center' }}>กรอกหมายเลขภาษี</label>
+          <label htmlFor="" style={{ fontSize: '18px', marginRight: '2vh', display: 'flex', justifyContent: 'center' }}>กรอกเลขที่บิลภาษี</label>
           <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="" />
           <button className="btnnCheck" onClick={fetchData}>ตรวจสอบ</button>
         </div>
@@ -43,7 +43,7 @@ function CheckPageTax() {
         <table>
           <thead>
             <tr>
-                <th style={{width: '15%'}}>เลขที่บิลใบเสร็จ</th>
+                <th style={{width: '15%'}}>เลขที่บิลภาษี</th>
                 <th style={{width: '10%'}}>ประเภท</th>
                 <th style={{width: '10%'}}>วันที่ชำระเงิน</th>
                 <th style={{width: '15%'}}>สถานะ</th>
