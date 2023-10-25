@@ -114,11 +114,12 @@ function AdminOrderPlace() {
             <table>
             <thead>
               <tr>
-                <th style={{width: '10%'}}>หมายเลขบัตรประชาชน</th>
+                <th style={{width: '10%'}}>เลขบัตรประชาชน</th>
                 <th style={{width: '10%'}}>สถานที่ที่ต้องการจอง</th>
                 <th style={{width: '10%'}}>วันที่ที่ต้องการจอง</th>
                 <th style={{width: '30%'}}>รายละเอียด</th>
                 <th style={{width: '15%'}}>สถานะ</th>
+                <th style={{width: '20%'}}>หมายเหตุ</th>
               </tr>
             </thead>
             <tbody>
@@ -133,6 +134,11 @@ function AdminOrderPlace() {
                     <div className="TabBtnReq">
                       <button className="AdminBtnReq" onClick={() => handleAccept(item.id)} name="Accept">Accept</button>
                       <button className="AdminBtnReq" onClick={() => handleDecline(item.id)} name="Decline">Decline</button>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="note">
+                      <input type="text" />
                     </div>
                   </td>
                 </tr>

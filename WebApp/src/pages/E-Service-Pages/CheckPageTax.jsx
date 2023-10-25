@@ -43,10 +43,11 @@ function CheckPageTax() {
         <table>
           <thead>
             <tr>
-                <th style={{width: '15%'}}>เลขที่บิลภาษี</th>
-                <th style={{width: '10%'}}>ประเภท</th>
-                <th style={{width: '10%'}}>วันที่ชำระเงิน</th>
+                <th style={{width: '12%'}}>เลขที่บิลภาษี</th>
+                <th style={{width: '12%'}}>ประเภท</th>
+                <th style={{width: '12%'}}>วันที่ชำระเงิน</th>
                 <th style={{width: '15%'}}>สถานะ</th>
+                <th style={{width: '20%'}}>หมายเหตุ</th>
             </tr>
           </thead>
           <tbody>

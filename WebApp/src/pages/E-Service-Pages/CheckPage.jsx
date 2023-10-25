@@ -35,10 +35,11 @@ function CheckPage() {
         <table>
           <thead>
             <tr>
-              <th style={{ width: '22%' }}>หมายเลขคำร้อง</th>
-              <th style={{ width: '15%' }}>ประเภท</th>
-              <th style={{ width: '40%' }}>รายละเอียด</th>
-              <th style={{ width: '15%' }}>สถานะ</th>
+              <th style={{ width: '12%' }}>หมายเลขคำร้อง</th>
+              <th style={{ width: '12%' }}>ประเภท</th>
+              <th style={{ width: '30%' }}>รายละเอียด</th>
+              <th style={{ width: '12%' }}>สถานะ</th>
+              <th style={{ width: '22%' }}>หมายเหตุ</th>
             </tr>
           </thead>
           <tbody>

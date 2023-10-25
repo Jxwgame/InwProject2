@@ -129,11 +129,12 @@ function AdminRequest() {
           <table>
             <thead>
               <tr>
-                <th style={{width: '5%'}}>หมายเลขบัตรประชาชน</th>
-                <th style={{width: '5%'}}>หมายเลขคำร้อง</th>
-                <th style={{width: '10%'}}>ประเภท</th>
-                <th style={{width: '20%'}}>รายละเอียด</th>
-                <th style={{width: '10%'}}>สถานะ</th>
+                <th style={{width: '15%'}}>เลขบัตรประชาชน</th>
+                <th style={{width: '15%'}}>เลขคำร้อง</th>
+                <th style={{width: '15%'}}>ประเภท</th>
+                <th style={{width: '25%'}}>รายละเอียด</th>
+                <th style={{width: '15%'}}>สถานะ</th>
+                <th style={{width: '25%'}}>หมายเหตุ</th>
               </tr>
             </thead>
             <tbody>
@@ -148,6 +149,11 @@ function AdminRequest() {
                     <div className="TabBtnReq">
                       <button className="AdminBtnReq" onClick={() => handleAccept(item.idr)} name="Accept">Accept</button>
                       <button className="AdminBtnReq" onClick={() => handleDecline(item.idr)} name="Decline">Decline</button>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="note">
+                      <input type="text"/>
                     </div>
                   </td>
                 </tr>

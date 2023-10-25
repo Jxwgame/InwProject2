@@ -126,6 +126,7 @@ function AdminTax() {
                 <th style={{width: '10%'}}>วันที่ที่ชำระเงิน</th>
                 <th style={{width: '10%'}}>สลิป</th>
                 <th style={{width: '5%'}}>สถานะ</th>
+                <th style={{width: '10%'}}>หมายเหตุ</th>
               </tr>
             </thead>
             <tbody>
@@ -140,6 +141,11 @@ function AdminTax() {
                     <div className="TabBtnReq">
                       <button className="AdminBtnReq" onClick={() => handleAccept(item.id)} name="Accept">Accept</button>
                       <button className="AdminBtnReq" onClick={() => handleDecline(item.id)} name="Decline">Decline</button>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="note">
+                      <input type="text" />
                     </div>
                   </td>
                 </tr>
