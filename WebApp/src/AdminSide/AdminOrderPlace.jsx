@@ -105,6 +105,33 @@ function AdminOrderPlace() {
       });      
   };
 
+    const [textarea, setTextarea]=  React.useState('')
+    const handleConfirm = async(id) => {
+    const jsonData = {
+        textdesc: textarea,
+    }
+    await fetch(`http://localhost:3131/noteodrp/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(jsonData)
+            if(data.status === 'ok'){
+                alert('success')
+            }else{
+                alert('fail')
+            }
+    })
+    .catch((error) => {
+        console.log(JSON.stringify(jsonData))
+        console.error('Error:', error);
+    });
+}
+
   return (
     <div>
       <HeadAdmin/>
@@ -138,7 +165,8 @@ function AdminOrderPlace() {
                   </td>
                   <td>
                     <div className="note">
-                      <input type="text" />
+                      <input type="text" onChange={e=> setTextarea(e.target.value)}/>
+                      <button className="AdminBtnReq" onClick={() => handleConfirm(item.id)} name="Accept">ยืนยัน</button>
                     </div>
                   </td>
                 </tr>

@@ -39,7 +39,7 @@ function CheckPage() {
               <th style={{ width: '12%' }}>ประเภท</th>
               <th style={{ width: '30%' }}>รายละเอียด</th>
               <th style={{ width: '12%' }}>สถานะ</th>
-              <th style={{ width: '22%' }}>หมายเหตุ</th>
+              <th style={{ width: '44%' }}>หมายเหตุ</th>
             </tr>
           </thead>
           <tbody>
@@ -49,6 +49,7 @@ function CheckPage() {
                 <td>{item.type}</td>
                 <td>{item.details}</td>
                 <td>{item.status}</td>
+                <td>{item.note}</td>
               </tr>
             ))}
           </tbody>

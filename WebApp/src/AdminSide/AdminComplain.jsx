@@ -110,7 +110,6 @@ function AdminComplain() {
                 <th style={{width: '10%'}}>หน่วยงานที่ร้องเรียน</th>
                 <th style={{width: '20%'}}>เรื่องที่ร้องเรียน</th>
                 <th style={{width: '10%'}}>สถานะ</th>
-                <th style={{width: '20%'}}>หมายเหตุ</th>
               </tr>
             </thead>
             <tbody>
@@ -125,11 +124,6 @@ function AdminComplain() {
                     <div className="TabBtnReq">
                       <button className="AdminBtnReq" onClick={() => handleAccept(item.id)} name="Accept">Accept</button>
                       <button className="AdminBtnReq" onClick={() => handleDecline(item.id)} name="Decline">Decline</button>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="note">
-                      <input type="text" />
                     </div>
                   </td>
                 </tr>

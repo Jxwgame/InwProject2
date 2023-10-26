@@ -57,6 +57,7 @@ function CheckPageTax() {
                 <td>{item.type}</td>
                 <td>{formattedDate(item.date)}</td>
                 <td>{item.status}</td>
+                <td>{item.note}</td>
               </tr>
             ))}
           </tbody>

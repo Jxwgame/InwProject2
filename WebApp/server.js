@@ -445,11 +445,11 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
     const citizenId = req.query.text;
     connection.query(
       `
-      SELECT request_id AS 'id', request_type AS 'type', request_desc AS 'details', request_status AS 'status'
+      SELECT request_id AS 'id', request_type AS 'type', request_desc AS 'details', request_status AS 'status', request_adNote AS 'note'
       FROM request
       WHERE request.citizen_id = ?
       UNION ALL
-      SELECT booking_id AS 'id', booking_type AS 'type', booking_desc AS 'details', booking_status AS 'status'
+      SELECT booking_id AS 'id', booking_type AS 'type', booking_desc AS 'details', booking_status AS 'status', booking_adNote AS 'note'
       FROM booking
       WHERE booking.citizen_id = ?
     `,
@@ -467,7 +467,7 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
     const tax_id = req.query.text;
     connection.query(
       `
-      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status'
+      SELECT tax_id AS 'id', tax_type AS 'type', tax_date AS 'date', tax_payment_status AS 'status', tax_adNote AS 'note'
       FROM tax
       WHERE tax.tax_id = ?
     `,
@@ -575,7 +575,6 @@ app.post('/formplace', jsonParser, async function (req, res, next) {
 
   //Admin sta req
   app.put('/updateStatusreq/:idr', jsonParser, async function(req, res, next) {
-    console.log(req.params.idr)
     const idr = req.params.idr;
     const newStatus = req.body.status;
     connection.execute(
@@ -625,6 +624,55 @@ app.put('/updateStatustax/:id', jsonParser, async function(req, res, next) {
   );
 });
 
+//Admin note req
+app.post('/notereq/:idr', jsonParser, async function(req, res, next) {
+  const idr = req.params.idr;
+  connection.execute(
+    'UPDATE request SET request_adNote = ? WHERE request_id = ?',
+    [req.body.textdesc, idr],
+    // 'UPDATE request SET request_status = ? WHERE request_id = ?',
+    // [newStatus, idr],
+    function(err) {
+      if (err) {
+        res.json({ status: 'error', msg: err });
+        return;
+      }
+      res.json({ status: 'ok' });
+    }
+  );
+});
+
+//Admin note orderPlace
+app.post('/noteodrp/:id', jsonParser, async function(req, res, next) {
+  const id = req.params.id;
+  connection.execute(
+    'UPDATE booking SET booking_adNote = ? WHERE citizen_id = ?',
+    [req.body.textdesc, id],
+    function(err) {
+      if (err) {
+        res.json({ status: 'error', msg: err });
+        return;
+      }
+      res.json({ status: 'ok' });
+    }
+  );
+});
+
+//Admin note tax
+app.post('/notetax/:id', jsonParser, async function(req, res, next) {
+  const id = req.params.id;
+  connection.execute(
+    'UPDATE tax SET tax_adNote = ? WHERE tax_id = ?',
+    [req.body.textdesc, id],
+    function(err) {
+      if (err) {
+        res.json({ status: 'error', msg: err });
+        return;
+      }
+      res.json({ status: 'ok' });
+    }
+  );
+});
 
 //จำนวนคำร้อง
 app.get('/countreq', jsonParser, function (req, res, next){
